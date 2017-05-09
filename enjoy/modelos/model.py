@@ -114,7 +114,7 @@ class Traslado(models.Model):
     _name = 'enjoy.traslado'
     _description = 'Traslado '
 
-    name = fields.Selection([('t', 'Transfer'), ('l', 'Local')], 'Tipo de Travel', required=True)
+    name = fields.Selection([('t', 'Transfer'), ('l', 'Local')], 'Type trip', required=True)
     origen = fields.Many2one('enjoy.lugar', 'From', required=True)
     destino = fields.Many2one('enjoy.lugar', 'To', required=True)
     van4 = fields.Integer('Van 4-7 places', required=True, default=0)
@@ -141,7 +141,7 @@ class Condicion(models.Model):
     _name = 'enjoy.condicion'
     _description = 'Condicion '
 
-    name = fields.Char('Identifier', size=200, required=True, default='* ')
+    name = fields.Char('Identifier', size=200, required=True, default='*')
     descrip = fields.Text('Description', required=True)
     tablilla_id = fields.Many2one('enjoy.tablilla', 'Clapboard', required=True)
 
@@ -162,7 +162,7 @@ class Cama(models.Model):
     _description = 'Registro de cama '
 
     cantidad = fields.Integer('Quantity', required=True, default=1)
-    tipo = fields.Selection([('p', 'Personal'), ('m', 'Matrimonial'), ('em', 'Extra Matrimonial')], 'Tipo',
+    tipo = fields.Selection([('p', 'Personal'), ('m', 'Matrimonial'), ('em', 'Extra Matrimonial')], 'Kind',
                             required=True)
     casa_id = fields.Many2one('enjoy.casa', 'House', required=True, ondelete='cascade')
 
@@ -181,7 +181,7 @@ class Banno(models.Model):
     _description = 'Registro de Bannos'
 
     cantidad = fields.Integer('Quantity', required=True, default=1)
-    tipo = fields.Selection([('p', 'Private'), ('c', 'Shared')], 'Tipo', required=True)
+    tipo = fields.Selection([('p', 'Private'), ('c', 'Shared')], 'Kind', required=True)
     casa_id = fields.Many2one('enjoy.casa', 'House', required=True, ondelete='cascade')
 
     _sql_constraints = [
@@ -270,7 +270,7 @@ class House(models.Model):
                                    required=True)
     dispone = fields.Selection(
             [('entera', 'Entire Property'), ('privada', 'Private room'), ('compartida', 'Shared room')],
-        'Dispone de', required=True)
+        'Dispose of', required=True)
     capacidad = fields.Integer('Number of Guests', required=True, default=4)
     dormitorios = fields.Integer('Number of Bedrooms', required=True, default=4)
     cama_ids = fields.One2many('enjoy.cama', 'casa_id', 'Types of Bed')
@@ -289,9 +289,15 @@ class House(models.Model):
     nivelx = fields.Char('Level', compute='_getnombre', store=True)
 
     image = fields.Binary("Photo", default=_default_image, attachment=True)
-    image_lateral = fields.Binary("Side Image", default=_default_image, attachment=True)
-    image_foot1 = fields.Binary("Image Below1", default=_default_image, attachment=True)
-    image_foot2 = fields.Binary("Image Below2", default=_default_image, attachment=True)
+    image1 = fields.Binary("Photo", default=_default_image, attachment=True)
+    image2 = fields.Binary("Photo", default=_default_image, attachment=True)
+    image3 = fields.Binary("Photo", default=_default_image, attachment=True)
+    image4 = fields.Binary("Photo", default=_default_image, attachment=True)
+    image5 = fields.Binary("Photo", default=_default_image, attachment=True)
+    image6 = fields.Binary("Photo", default=_default_image, attachment=True)
+    image7 = fields.Binary("Photo", default=_default_image, attachment=True)
+    image8 = fields.Binary("Photo", default=_default_image, attachment=True)
+    image9 = fields.Binary("Photo", default=_default_image, attachment=True)
 
     image_medium = fields.Binary("Medium-sized photo", attachment=True,
                                  help="Medium-sized photo of the employee. It is automatically "
@@ -355,9 +361,10 @@ class Reporte(models.Model):
         self.write({'state': 'Done'})
 
 
-class Restino(models.Model):
+class Destino(models.Model):
     _name = 'enjoy.destino'
     _description = 'Tos para los Correos de los catalogo'
 
     name = fields.Char('Addressee', size=100, required=True)
     report_id = fields.Many2one('enjoy.report.mail', 'Reporte', required=True)
+

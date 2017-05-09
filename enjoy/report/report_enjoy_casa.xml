@@ -42,7 +42,7 @@
                                 </div>
 
                                 <div class="col-xs-12">
-                                    <span t-field="o.image_lateral" t-field-options='{"widget": "image"}'
+                                    <span t-field="o.image1" t-field-options='{"widget": "image"}'
                                           style="height: 45px;"/>
                                 </div>
                                 <div class="col-xs-12">
@@ -203,11 +203,11 @@
                                             </table>
                                         </div>
                                         <div class="col-xs-12" style="padding-top:30px;">
-                                            <span t-field="o.image_foot1" t-field-options='{"widget": "image"}'/>
+                                            <span t-field="o.image2" t-field-options='{"widget": "image"}'/>
                                         </div>
                                     </div>
                                     <div class="col-xs-6" style="padding-top:10px;">
-                                        <span t-field="o.image_foot2" t-field-options='{"widget": "image"}'/>
+                                        <span t-field="o.image3" t-field-options='{"widget": "image"}'/>
                                     </div>
 
                                 </div>

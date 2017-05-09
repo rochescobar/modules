@@ -25,7 +25,7 @@
                                 string="Province"/>
                         <filter name="groupby_nivelx" context="{'group_by' : 'nivelx'}"
                                 string="Level"/>
-                         <filter name="groupby_lugar" context="{'group_by' : 'lugar'}"
+                        <filter name="groupby_lugar" context="{'group_by' : 'lugar'}"
                                 string="Location"/>
                     </group>
                 </search>
@@ -42,8 +42,7 @@
                         <t t-name="kanban-box">
                             <div class="oe_kanban_global_click">
                                 <div class="o_kanban_image">
-                                    <img t-att-src="kanban_image('enjoy.casa', 'image_medium', record.id.value)"
-                                         options='{"size": [200, 200]}'/>
+                                    <img t-att-src="kanban_image('enjoy.casa', 'image_medium', record.id.value)"/>
                                 </div>
                                 <div class="oe_kanban_details">
                                     <strong>
@@ -94,7 +93,7 @@
                             <!--<field name="catalogo_id" colspan="6"/>-->
 
                         </group>
-                        <group string="Datos del Hospedaje" col="12">
+                        <group string="Accommodation Information" col="12">
                             <group colspan="4">
                                 <field name="alojamiento"/>
                                 <field name="dispone"/>
@@ -132,12 +131,25 @@
                         </group>
                         <group>
                             <group col="6" string="Images for Catalog" colspan="12">
-                                <field name="image_lateral" widget='image'
-                                       options='{"preview_image":"image_lateral", "size": [200, 200]}'/>
-                                <field name="image_foot1" widget='image'
-                                       options='{"preview_image":"image_foot1", "size": [200, 200]}'/>
-                                <field name="image_foot2" widget='image'
-                                       options='{"preview_image":"image_foot2", "size": [200, 200]}'/>
+                                <field name="image1" widget='image' nolabel="1" colspan="2"
+                                       options='{"preview_image":"image1", "size": [380, 250]}'/>
+                                <field name="image2" widget='image' nolabel="1" colspan="2"
+                                       options='{"preview_image":"image2", "size": [380, 250]}'/>
+                                <field name="image3" widget='image' nolabel="1" colspan="2"
+                                       options='{"preview_image":"image3", "size": [380, 250]}'/>
+                                <field name="image4" widget='image' nolabel="1" colspan="2"
+                                       options='{"preview_image":"image4", "size": [380, 250]}'/>
+                                <field name="image5" widget='image' nolabel="1" colspan="2"
+                                       options='{"preview_image":"image5", "size": [380, 250]}'/>
+                                <field name="image6" widget='image' nolabel="1" colspan="2"
+                                       options='{"preview_image":"image6", "size": [380, 250]}'/>
+                                <field name="image7" widget='image' nolabel="1" colspan="2"
+                                       options='{"preview_image":"image7", "size": [380, 250]}'/>
+                                <field name="image8" widget='image' nolabel="1" colspan="2"
+                                       options='{"preview_image":"image8", "size": [380, 250]}'/>
+                                <field name="image9" widget='image' nolabel="1" colspan="2"
+                                       options='{"preview_image":"image9", "size": [380, 250]}'/>
+
                             </group>
                         </group>
 

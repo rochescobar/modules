@@ -21,9 +21,9 @@
             <field name="arch" type="xml">
                 <form string="catalogo">
                     <sheet string="catalogo">
-                        <label for="nombre" class="oe_edit_only" string="Catalogs name"/>
+                        <label for="nombre" class="oe_edit_only" string="Catalogue name"/>
                         <h1>
-                            <field name="nombre" placeholder="Catalogs" style="width: 20em" colspan="2"/>
+                            <field name="nombre" placeholder="Catalogue" style="width: 20em" colspan="2"/>
                         </h1>
                         <group col="6">
                             <field name="lugar"/>

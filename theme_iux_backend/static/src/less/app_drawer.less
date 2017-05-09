@@ -1,0 +1,220 @@
+/* Copyright 2016 LasLabs Inc.
+ * License LGPL-3.0 or later (http://www.gnu.org/licenses/lgpl). */
+
+.app-drawer-nav {
+  border-color: @dropdown-border;
+  background-color: @dropdown-bg;
+  border: 0px solid @dropdown-fallback-border; // IE8 fallback
+  border: 0px solid @dropdown-border;
+  border-radius: 0px !important;
+  //    -webkit-border-radius: @border-radius-base;
+  //    -moz-border-radius: @border-radius-base;
+  border-radius: @border-radius-base;
+  //    .box-shadow(0 6px 12px rgba(0, 0, 0, .175));
+  background-clip: padding-box;
+
+  .navbar-left {
+    width: 100%;
+
+    li {
+      padding: 0;
+    }
+  }
+
+  .app-drawer-title {
+    float: none;
+  }
+
+  .app-drawer-panel-title {
+    margin-top: 4px;
+  }
+
+  .app-drawer-icon-app {
+    height: 100%;
+    width: 100%;
+    max-width: @app-drawer-icon-size;
+    max-height: @app-drawer-icon-size;
+    object-fit: contain;
+    object-position: center;
+  }
+
+  .panel-body {
+    padding-top: @app-drawer-title-height;
+  }
+
+  #appDrawerAppPanelHead {
+    position: absolute;
+    height: @app-drawer-title-height;
+    width: 100%;
+    z-index: 9999;
+  }
+
+}
+
+.drawer-nav {
+  width: @app-drawer-width;
+  z-index: 9999;
+}
+
+.drawer--left .drawer-nav {
+  left: -@app-drawer-width;
+}
+
+.drawer--left.drawer-open .drawer-hamburger {
+  left: @app-drawer-width;
+}
+
+.drawer--right .drawer-nav {
+  right: -@app-drawer-width;
+}
+
+.drawer-open .oe-right-toolbar {
+  display: none;
+}
+
+.drawer-closed .oe-right-toolbar {
+  display: block;
+}
+
+/* App Drawer Toggle */
+
+.app-drawer-toggle {
+  background-color: transparent;
+  border: none;
+}
+
+.app-drawer-toggle.navbar-toggle {
+  background-color: #ee3366;
+  margin-left: 1em;
+}
+
+// Add background image
+.drawer-nav {
+  background: transparent url('/theme_iux_backend/static/src/img/Xedro.jpg') no-repeat scroll center center / cover;
+}
+
+.app-drawer-nav .app-drawer-title {
+  color: #b6b8d4;
+}
+
+// Center app icons
+.app-drawer-nav .panel-body {
+  margin: auto;
+  max-width: 768px;
+  padding-top: 80px;
+  width: 90%;
+}
+
+// iux
+
+#header > div {
+  margin-bottom: 26px;
+}
+
+.toolbar {
+  box-shadow: none;
+  padding: 0;
+  margin-top: -2px;
+}
+
+.remove-list-style {
+  list-style: none outside none;
+}
+
+.the-icons {
+
+  display: inline-block !important;
+  vertical-align: top;
+  list-style: none outside none;
+  margin-right: 5px;
+  z-index: 99999;
+
+}
+
+.the-icons > img {
+  border: 1px solid transparent;
+  transition: 0.2s linear 0s;
+  border-radius: 4px;
+  padding: 8px;
+}
+
+#sprite-view, #gallery {
+  height: 100%;
+}
+
+.the-icons > img:hover, .selected-icon {
+
+  border: 1px solid #0162b1 !important;
+  background: rgba(190, 220, 240, .2);
+
+}
+
+.logo {
+  background: #ffffff; /* Old browsers */
+  background: -moz-linear-gradient(top, #ffffff 0%, #ffffff 32%, #dedede 100%); /* FF3.6+ */
+  background: -webkit-gradient(linear, left top, left bottom, color-stop(0%, #ffffff), color-stop(32%, #ffffff), color-stop(100%, #dedede)); /* Chrome,Safari4+ */
+  background: -webkit-linear-gradient(top, #ffffff 0%, #ffffff 32%, #dedede 100%); /* Chrome10+,Safari5.1+ */
+  background: -o-linear-gradient(top, #ffffff 0%, #ffffff 32%, #dedede 100%); /* Opera 11.10+ */
+  background: -ms-linear-gradient(top, #ffffff 0%, #ffffff 32%, #dedede 100%); /* IE10+ */
+  background: linear-gradient(to bottom, #ffffff 0%, #ffffff 32%, #dedede 100%); /* W3C */
+  filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#ffffff', endColorstr='#dedede', GradientType=0); /* IE6-9 */
+  float: left;
+}
+
+//
+.img_logo {
+  margin: 8px 0 8px 1em;
+}
+
+//
+.grafica {
+  height: 60px;
+  float: right;
+  background-image: url("/theme_iux_backend/static/src/img/grafica.jpg");
+  width: 281px;
+}
+
+//
+//.usuario {
+//    background: #d6d6d6;
+//    height: 60px;
+//    float: right;
+//    padding: 0 12px 0 0;
+//}
+//
+//.content_avatar {
+//    padding: 3px;
+//    height: 46px;
+//    width: 46px;
+//    background: #FFFFFF;
+//    margin: 4px 6px;
+//    border-radius: 4px;
+//    float: left;
+//}
+//
+//.avatar {
+//    height: 46px;
+//    width: 46px;
+//    overflow: hidden;
+//}
+//
+//.user-opt {
+//
+//    display: inline-block;
+//}
+//
+//#user-opt {
+//    margin-top: 12px;
+//}
+//
+//.fix-container {
+//    padding-left: 0;
+//    padding-right: 0;
+//}
+.o_web_client {
+  .o_main {
+    .o_main_content {
+             background-color: #8f8f8f;
+    }
+  }
+}
