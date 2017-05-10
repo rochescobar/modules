@@ -59,4 +59,8 @@ Pasos para instalar, configurar y trabajar en git
 mejias1990
 mejias1990**
 90062639427
-			
+
+
+			git clone https://github.com/rochescobar/modules.git
+			git pull https://github.com/rochescobar/modules.git
+			git push https://github.com/rochescobar/modules.git
