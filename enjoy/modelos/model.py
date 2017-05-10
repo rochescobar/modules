@@ -206,7 +206,7 @@ class Zona(models.Model):
     casa_id = fields.Many2many('enjoy.casa', string='House')
 
 
-class Comision(models.Model):
+class Commission(models.Model):
     _name = 'enjoy.comision'
     _description = 'Precio de venta de casa por Vendedor'
 
@@ -214,14 +214,34 @@ class Comision(models.Model):
     casa_id = fields.Many2one('enjoy.casa', 'House name', required=True, ondelete='cascade')
     user_id = fields.Many2one('res.users', 'Responsable', default=lambda self: self.env.user)
     precio = fields.Integer('House price', compute='_getprecio')
+    total_price = fields.Integer('Total price', compute='_calc_price')
+
+    def commission_house(self):
+        house_ids = self.env['enjoy.casa'].search([('id', '!=', self.casa_id.id)])
+        for home in house_ids:
+            aux = self.env['enjoy.comision'].search([('casa_id', '=', home.id)])
+            if aux:
+                aux.comision = self.comision
+            else:
+                aux2 = self.env['enjoy.comision'].create({
+                    'comision': self.comision,
+                    'casa_id': home.id,
+                    'user_id': self.env.user.id,
+                })
+        # raise Warning
 
     @api.one
     @api.depends('casa_id')
     def _getprecio(self):
         self.precio = self.casa_id.precio
 
+    @api.one
+    @api.depends('comision', 'precio')
+    def _calc_price(self):
+        self.total_price = self.precio + self.comision
+
     _sql_constraints = [
-        ('comis_unique', 'UNIQUE(casa_id, user_id)', "Existen comisiones repetidas"),
+        ('comis_unique', 'UNIQUE(casa_id, user_id)', "There are repeated commissions"),
     ]
 
 
@@ -281,7 +301,7 @@ class House(models.Model):
     zona_ids = fields.Many2many('enjoy.zona', 'enjoy_zona_casa', 'casa_id', 'zona_id', 'Areas you can use')
     para = fields.Selection([('f', 'Family'), ('g', 'Groups'), ('m', 'Pets')], 'Is perfect for',
                             required=True)
-    precio = fields.Integer('Precio', required=True, default=0)
+    precio = fields.Integer('Price', required=True, default=0)
     # comision = fields.Integer('Commission', required=True, default=0)
     fpago = fields.Selection([('e', 'Cash'), ('t', 'Card')], 'Way to pay', required=True)
     nivel = fields.Selection([('e', 'Economic'), ('c', 'Confort'), ('l', 'luxurious')], 'Level',
@@ -345,7 +365,7 @@ class Reporte(models.Model):
     descrip = fields.Text('Description', size=1000)
     state = fields.Selection(
         [('Draft', 'Draft'), ('Confirmed', 'Confirmed'), ('Cancelled', 'Cancelled'), ('Done', 'Done')],
-        'Estado',
+        'State',
         required=True, default='Draft')
 
     def state_borrador(self):
@@ -360,11 +380,16 @@ class Reporte(models.Model):
     def state_done(self):
         self.write({'state': 'Done'})
 
+    @api.constrains('fecha_inicio', 'fecha_fin')
+    def _check_duration(self):
+        if self.fecha_fin < self.fecha_inicio:
+            raise ValueError("Date error")
+
 
 class Destino(models.Model):
     _name = 'enjoy.destino'
     _description = 'Tos para los Correos de los catalogo'
 
-    name = fields.Char('Addressee', size=100, required=True)
+    name = fields.Char('Address', size=100, required=True)
     report_id = fields.Many2one('enjoy.report.mail', 'Reporte', required=True)
 

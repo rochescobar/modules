@@ -5,8 +5,8 @@
             <field name="name">enjoy.casa.search</field>
             <field name="model">enjoy.casa</field>
             <field name="arch" type="xml">
-                <search string="casas">
-                    <field name="propiedad"/>
+                <search string="houses">
+                    <field name="name"/>
                     <field name="alojamiento"/>
                     <field name="dispone"/>
                     <field name="capacidad"/>
@@ -102,7 +102,7 @@
                                 <field name="para"/>
                                 <field name="nivel"/>
                                 <field name="nivelx" invisible="1"/>
-                                <label for="precio" string="Precio y Forma de Pago"/>
+                                <label for="precio" string="Price and Payment"/>
                                 <div>
                                     <field name="precio" style="width: 4em" colspan="1" class="oe_inline"/>
                                     -
@@ -168,11 +168,11 @@
             <field name="arch" type="xml">
                 <tree string="casa" default_order='name'>
                     <field name="name"/>
-                    <field name="propiedad"/>
+                    <!--<field name="propiedad"/>-->
                     <field name="alojamiento"/>
                     <field name="dispone"/>
-                    <field name="capacidad"/>
-                    <field name="dormitorios"/>
+                    <!--<field name="capacidad"/>-->
+                    <!--<field name="dormitorios"/>-->
                     <field name="provincia"/>
                     <field name="lugar"/>
                     <field name="precio"/>
@@ -187,13 +187,6 @@
             <field name="name">Houses</field>
             <field name="res_model">enjoy.casa</field>
             <field name="view_mode">kanban,tree,form</field>
-            <field name="help" type="html">
-                <p class="oe_view_nocontent_create">
-                    Haga clic aquí para añadir una casa al sistema.
-                </p>
-                <p>
-                </p>
-            </field>
         </record>
 
         <menuitem id="enjoy_casas" name="Houses" parent="menu_enjoy_casa" sequence="1"

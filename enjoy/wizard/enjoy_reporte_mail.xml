@@ -9,7 +9,7 @@
                     <group col="4">
                         <field name="catalogo_id" options="{'no_open': True, 'no_create': True}" colspan="2"/>
                         <field name="destino_ids" widget="one2many_list" colspan="2" nolabel="1" mode="tree">
-                            <tree string="Autos" default_order='name' editable="bottom">
+                            <tree string="Cars" default_order='name' editable="bottom">
                                 <field name="name" widget="email"/>
                             </tree>
                         </field>
@@ -19,7 +19,7 @@
                         <button name="imprimir_reporte" string="Enviar" type="object" default_focus="1"
                                 class="oe_highlight"/>
                         o
-                        <button string="Cancelar" class="oe_link" special="cancel"/>
+                        <button string="Cancel" class="oe_link" special="cancel"/>
                     </footer>
                 </form>
             </field>

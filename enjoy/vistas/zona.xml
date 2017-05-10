@@ -30,13 +30,6 @@
             <field name="name">Zonas</field>
             <field name="res_model">enjoy.zona</field>
             <field name="view_mode">tree</field>
-            <field name="help" type="html">
-                <p class="oe_view_nocontent_create">
-                    Click here to add a zone to the system.
-                </p>
-                <p>
-                </p>
-            </field>
         </record>
         <menuitem id="menu_enjoy_casa_zona" name="Areas" parent="enjoy_casa_config" sequence="2"
                   action="action_zona" groups="enjoy.group_enjoy_admin"/>

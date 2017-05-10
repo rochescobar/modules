@@ -26,37 +26,37 @@
             <field name="arch" type="xml">
                 <form string="reporte">
                     <header>
-                        <button string="Confirm Report" name="confirmar" states="Borrador" type="workflow"
+                        <button string="Confirm Report" name="confirmar" states="Draft" type="workflow"
                                 class="oe_highlight"/>
-                        <button string="Report Done" name="done" states="Confirmado" type="workflow"
+                        <button string="Report Done" name="done" states="Confirmed" type="workflow"
                                 class="oe_highlight"/>
-                        <button string="Cancel Report" name="cancelar" states="Confirmado" type="workflow"/>
+                        <button string="Cancel Report" name="cancelar" states="Confirmed" type="workflow"/>
 
                         <field name="state" widget="statusbar"
-                               statusbar_visible="Confirmado,Cancelado,Hecho"/>
+                               statusbar_visible="Confirmed,Cancelled,Done"/>
                     </header>
                     <sheet string="reporte">
                         <group string="Reservation Report">
-                            <label for="name" class="oe_edit_only" string="Nombre de la Propiedad" colspan="2"/>
+                            <label for="name" class="oe_edit_only" string="Property name" colspan="2"/>
                             <h1>
-                                <field name="name" placeholder="Casa" style="width: 10em" colspan="2"
+                                <field name="name" placeholder="House" style="width: 10em" colspan="2"
                                        options="{'no_open': True, 'no_create': True}"
-                                       attrs="{'readonly':[('state','!=','Borrador')]}"/>
+                                       attrs="{'readonly':[('state','!=','Draft')]}"/>
                             </h1>
                             <group col="4">
                                 <group colspan="4">
                                     <label for="fecha_inicio" string="Booked From "/>
                                     <div>
                                         <field name="fecha_inicio" style="width: 4em" colspan="1" class="oe_inline"
-                                               attrs="{'readonly':[('state','!=','Borrador')]}"/>
+                                               attrs="{'readonly':[('state','!=','Draft')]}"/>
                                         al
                                         <field name="fecha_fin" class="oe_inline" nolabel="1"
-                                               attrs="{'readonly':[('state','!=','Borrador')]}"/>
+                                               attrs="{'readonly':[('state','!=','Draft')]}"/>
                                     </div>
                                 </group>
                                 <group colspan="4">
-                                    <field name="cliente" colspan="2" attrs="{'readonly':[('state','!=','Borrador')]}"/>
-                                    <field name="descrip" colspan="2" attrs="{'readonly':[('state','!=','Borrador')]}"/>
+                                    <field name="cliente" colspan="2" attrs="{'readonly':[('state','!=','Draft')]}"/>
+                                    <field name="descrip" colspan="2" attrs="{'readonly':[('state','!=','Draft')]}"/>
                                 </group>
                             </group>
                         </group>
@@ -76,7 +76,7 @@
             <field name="target">new</field>
             <field name="arch" type="xml">
                 <tree string="reporte" default_order='fecha_inicio'
-                      colors="blue:state == 'Confirmado';gray:state == 'Cancelado';green:state == 'Hecho'">
+                      colors="blue:state == 'Confirmed';gray:state == 'Cancelado';green:state == 'Hecho'">
                     <field name="name"/>
                     <field name="fecha_inicio"/>
                     <field name="fecha_fin"/>
@@ -94,13 +94,6 @@
             <field name="res_model">enjoy.reporte</field>
             <field name="view_mode">tree,form</field>
             <field name="context">{"search_default_groupby_state" : True"}</field>
-            <field name="help" type="html">
-                <p class="oe_view_nocontent_create">
-                    Haga clic aquí para añadir un reporte al sistema.
-                </p>
-                <p>
-                </p>
-            </field>
         </record>
 
         <menuitem id="enjoy_reportes" name="Reports" parent="menu_enjoy_casa" sequence="1"

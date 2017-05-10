@@ -13,7 +13,7 @@ class enjoy_Reporte_Base(models.Model):
 
     company_id = fields.Many2one('res.company', string='Empresa', readonly=True,
                                  default=lambda self: self.env.user.company_id)
-    catalogo_id = fields.Many2one('enjoy.catalogo', 'Catálogo', required=True)
+    catalogo_id = fields.Many2one('enjoy.catalogo', 'Catalogue', required=True)
     destino_ids = fields.One2many('enjoy.destino','report_id','Remitentes')
 
     @api.multi

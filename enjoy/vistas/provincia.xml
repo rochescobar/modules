@@ -58,13 +58,6 @@
             <field name="name">Provinces</field>
             <field name="res_model">enjoy.provincia</field>
             <field name="view_mode">tree,form</field>
-            <field name="help" type="html">
-                <p class="oe_view_nocontent_create">
-                    Haga clic aquí para añadir un provincia al sistema.
-                </p>
-                <p>
-                </p>
-            </field>
         </record>
 
         <menuitem id="enjoy_provincias" name="Provinces" parent="enjoy_casa_config" sequence="0"

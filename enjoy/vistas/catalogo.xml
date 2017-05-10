@@ -68,13 +68,6 @@
             <field name="name">Catalogs</field>
             <field name="res_model">enjoy.catalogo</field>
             <field name="view_mode">tree,form</field>
-            <field name="help" type="html">
-                <p class="oe_view_nocontent_create">
-                    Haga clic aquí para añadir una catalogo al sistema.
-                </p>
-                <p>
-                </p>
-            </field>
         </record>
         <menuitem id="menu_enjoy_casa_catalogo" name="Catalogs" parent="menu_enjoy_casa" sequence="2"
                   action="action_catalogo"/>

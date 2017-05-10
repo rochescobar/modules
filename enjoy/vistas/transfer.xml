@@ -34,16 +34,9 @@
 
         <!--  ACCIONES -->
         <record model="ir.actions.act_window" id="action_transfer">
-            <field name="name">Transferes</field>
+            <field name="name">Transfers</field>
             <field name="res_model">enjoy.transfer</field>
             <field name="view_mode">tree</field>
-            <field name="help" type="html">
-                <p class="oe_view_nocontent_create">
-                    Haga clic aquí para añadir una transfer al sistema.
-                </p>
-                <p>
-                </p>
-            </field>
         </record>
 
         <menuitem id="enjoy_transfers" name="Transferes" parent="menu_enjoy" sequence="4"

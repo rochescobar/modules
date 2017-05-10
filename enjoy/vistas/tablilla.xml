@@ -18,7 +18,7 @@
             <field name="arch" type="xml">
                 <form string="tablilla">
                     <sheet string="tablilla">
-                        <label for="name" class="oe_edit_only" string="Nombre"/>
+                        <label for="name" class="oe_edit_only" string="Name"/>
                         <h1>
                             <field name="name" placeholder="Table Name" style="width: 20em" colspan="2"/>
                         </h1>
@@ -39,7 +39,7 @@
                                     </field>
                                 </group>
                             </page>
-                            <page string="Por Día">
+                            <page string="Per day">
                                 <group string="Tour (Rent per Day (8 hours of Work))">
                                     <field name="diario_ids" widget="one2many_list" colspan="4" nolabel="1"
                                            mode="tree" options="{'no_open': True, 'no_create': True}">

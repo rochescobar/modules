@@ -13,7 +13,7 @@
             <field name="wkf_id" ref="wkf_enjoy_reporte"/>
             <field name="flow_start">True</field>
             <field name="name">borrador</field>
-            <field name="action">write({'state':'Borrador'})</field>
+            <field name="action">write({'state':'Draft'})</field>
             <field name="kind">function</field>
         </record>
 

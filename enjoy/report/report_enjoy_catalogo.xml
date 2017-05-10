@@ -90,7 +90,7 @@
                                             <div class="col-xs-2 text-left" style=" background-color:f79147;">
                                                 <strong>
                                                     <h3>
-                                                        <span style="color:ffffff">Localización</span>
+                                                        <span style="color:ffffff">Location</span>
                                                     </h3>
                                                 </strong>
                                             </div>
@@ -215,7 +215,6 @@
                                     <!--</table>-->
                                     <!--</div>-->
                                     <!--<div class="col-xs-4">-->
-                                    <!--<strong>Baños</strong>-->
                                     <!--<table class="col-xs-12">-->
                                     <!--<tbody class="invoice_tbody">-->
                                     <!--<tr t-foreach="casa.banno_ids" t-as="b">-->

@@ -13,6 +13,34 @@
             </field>
         </record>
 
+        <record model="ir.ui.view" id="comision_form">
+            <field name="name">enjoy.comision.form</field>
+            <field name="model">enjoy.comision</field>
+            <field name="type">form</field>
+            <field name="arch" type="xml">
+                <form string="comision">
+                    <header>
+                        <button name="commission_house" string="Apply this commission to all houses" type="object"
+                                class="oe_highlight" help="Apply this commission to all houses"/>
+                    </header>
+                    <sheet string="comision">
+                        <label for="casa_id" class="oe_edit_only" string="House name"/>
+                        <h1>
+                            <field name="casa_id" placeholder="House" style="width: 20em" colspan="2"
+                                   options="{'no_open': True, 'no_create': True}"/>
+                        </h1>
+                        <group col="8">
+                            <field name="user_id" readonly="1" colspan="2"/>
+                            <field name="comision" colspan="2"/>
+                            <field name="precio" colspan="2"/>
+                            <field name="total_price" colspan="2"/>
+                        </group>
+
+                    </sheet>
+                </form>
+            </field>
+        </record>
+
 
         <!--Declaración de la vista de árbol-->
         <record model="ir.ui.view" id="comision_tree">
@@ -20,11 +48,12 @@
             <field name="model">enjoy.comision</field>
             <field name="type">tree</field>
             <field name="arch" type="xml">
-                <tree string="comision" default_order='casa_id' editable="botton">
-                    <field name="casa_id" options="{'no_open': True, 'no_create': True}"/>
-                    <field name="user_id" readonly="1"/>
+                <tree string="commission" default_order='casa_id'>
+                    <field name="casa_id"/>
+                    <field name="user_id"/>
                     <field name="precio"/>
                     <field name="comision"/>
+                    <field name="total_price"/>
                 </tree>
             </field>
         </record>
@@ -34,14 +63,7 @@
         <record model="ir.actions.act_window" id="action_comision">
             <field name="name">Commissions</field>
             <field name="res_model">enjoy.comision</field>
-            <field name="view_mode">tree</field>
-            <field name="help" type="html">
-                <p class="oe_view_nocontent_create">
-                    Haga clic aquí para añadir una comision al sistema.
-                </p>
-                <p>
-                </p>
-            </field>
+            <field name="view_mode">tree,form</field>
         </record>
         <menuitem id="menu_enjoy_casa_comision" name="Commissions" parent="menu_enjoy_casa" sequence="2"
                   action="action_comision"/>
