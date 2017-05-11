@@ -11,6 +11,8 @@ from odoo.modules.module import get_module_resource
 from datetime import date, datetime
 import time
 import logging
+import PIL
+from PIL import Image
 
 _logger = logging.getLogger(__name__)
 
@@ -195,7 +197,20 @@ class Servicio(models.Model):
 
     name = fields.Char('Name', size=200, required=True)
     image = fields.Binary("Photo", attachment=True)
+    image_medium = fields.Binary("Medium-sized photo", attachment=True)
+    image_small = fields.Binary("Small-sized photo", attachment=True)
+
     casa_id = fields.Many2many('enjoy.casa', string='House')
+
+    @api.model
+    def create(self, vals):
+        tools.image_resize_images(vals)
+        return super(Servicio, self).create(vals)
+
+    @api.multi
+    def write(self, vals):
+        tools.image_resize_images(vals)
+        return super(Servicio, self).write(vals)
 
 
 class Zona(models.Model):
@@ -228,7 +243,7 @@ class Commission(models.Model):
                     'casa_id': home.id,
                     'user_id': self.env.user.id,
                 })
-        # raise Warning
+                # raise Warning
 
     @api.one
     @api.depends('casa_id')
@@ -289,7 +304,7 @@ class House(models.Model):
     alojamiento = fields.Selection([('casa', 'House'), ('apto', 'Apartment')], 'Type of accommodation',
                                    required=True)
     dispone = fields.Selection(
-            [('entera', 'Entire Property'), ('privada', 'Private room'), ('compartida', 'Shared room')],
+        [('entera', 'Entire Property'), ('privada', 'Private room'), ('compartida', 'Shared room')],
         'Dispose of', required=True)
     capacidad = fields.Integer('Number of Guests', required=True, default=4)
     dormitorios = fields.Integer('Number of Bedrooms', required=True, default=4)
@@ -319,14 +334,8 @@ class House(models.Model):
     image8 = fields.Binary("Photo", default=_default_image, attachment=True)
     image9 = fields.Binary("Photo", default=_default_image, attachment=True)
 
-    image_medium = fields.Binary("Medium-sized photo", attachment=True,
-                                 help="Medium-sized photo of the employee. It is automatically "
-                                      "resized as a 128x128px image, with aspect ratio preserved. "
-                                      "Use this field in form views or some kanban views.")
-    image_small = fields.Binary("Small-sized photo", attachment=True,
-                                help="Small-sized photo of the employee. It is automatically "
-                                     "resized as a 64x64px image, with aspect ratio preserved. "
-                                     "Use this field anywhere a small image is required.")
+    image_medium = fields.Binary("Medium-sized photo", attachment=True)
+    image_small = fields.Binary("Small-sized photo", attachment=True)
 
     @api.one
     @api.depends('nivel')
@@ -346,6 +355,32 @@ class House(models.Model):
     @api.multi
     def write(self, vals):
         tools.image_resize_images(vals)
+        if vals.get('image1') != None:
+            vals['image1'] = tools.image_resize_image(vals.get('image1'), (500, 300))
+
+        if vals.get('image2') != None:
+            vals['image2'] = tools.image_resize_image(vals.get('image2'), (500, 300))
+
+        if vals.get('image3') != None:
+            vals['image3'] = tools.image_resize_image(vals.get('image3'), (500, 300))
+
+        if vals.get('image4') != None:
+            vals['image4'] = tools.image_resize_image(vals.get('image4'), (500, 300))
+
+        if vals.get('image5') != None:
+            vals['image5'] = tools.image_resize_image(vals.get('image5'), (500, 300))
+
+        if vals.get('image6') != None:
+            vals['image6'] = tools.image_resize_image(vals.get('image6'), (500, 300))
+
+        if vals.get('image7') != None:
+            vals['image7'] = tools.image_resize_image(vals.get('image7'), (500, 300))
+
+        if vals.get('image8') != None:
+            vals['image8'] = tools.image_resize_image(vals.get('image8'), (500, 300))
+
+        if vals.get('image9') != None:
+            vals['image9'] = tools.image_resize_image(vals.get('image9'), (500, 300))
         return super(House, self).write(vals)
 
     _sql_constraints = [
@@ -392,4 +427,3 @@ class Destino(models.Model):
 
     name = fields.Char('Address', size=100, required=True)
     report_id = fields.Many2one('enjoy.report.mail', 'Reporte', required=True)
-

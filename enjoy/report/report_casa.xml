@@ -20,7 +20,7 @@
         <report
                 id="action_report_casa"
                 model="enjoy.casa"
-                string="Exportar Catálogo"
+                string="Export Catalog"
                 report_type="qweb-pdf"
                 name="enjoy.report_enjoy_casa"
                 file="enjoy.report_enjoy_casa"
@@ -28,7 +28,7 @@
         <report
                 id="action_report_catalogo"
                 model="enjoy.catalogo"
-                string="Exportar Catálogo"
+                string="Export Catalog"
                 report_type="qweb-pdf"
                 name="enjoy.report_enjoy_catalogo"
                 file="enjoy.report_enjoy_catalogo"

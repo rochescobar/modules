@@ -471,66 +471,6 @@ msgid "Groups"
 msgstr "Grupos"
 
 #. module: enjoy
-#: model:ir.actions.act_window,help:enjoy.action_provincia
-msgid "Haga clic aquí para añadir un provincia al sistema."
-msgstr "Haga clic aquí para añadir un provincia al sistema."
-
-#. module: enjoy
-#: model:ir.actions.act_window,help:enjoy.action_reporte
-msgid "Haga clic aquí para añadir un reporte al sistema."
-msgstr "Haga clic aquí para añadir un reporte al sistema."
-
-#. module: enjoy
-#: model:ir.actions.act_window,help:enjoy.action_auto
-msgid "Haga clic aquí para añadir una auto al sistema."
-msgstr "Haga clic aquí para añadir una auto al sistema."
-
-#. module: enjoy
-#: model:ir.actions.act_window,help:enjoy.action_casa
-msgid "Haga clic aquí para añadir una casa al sistema."
-msgstr "Haga clic aquí para añadir una casa al sistema."
-
-#. module: enjoy
-#: model:ir.actions.act_window,help:enjoy.action_catalogo
-msgid "Haga clic aquí para añadir una catalogo al sistema."
-msgstr "Haga clic aquí para añadir una catalogo al sistema."
-
-#. module: enjoy
-#: model:ir.actions.act_window,help:enjoy.action_comision
-msgid "Haga clic aquí para añadir una comision al sistema."
-msgstr "Haga clic aquí para añadir una comision al sistema."
-
-#. module: enjoy
-#: model:ir.actions.act_window,help:enjoy.action_lugar
-msgid "Haga clic aquí para añadir una lugar al sistema."
-msgstr "Haga clic aquí para añadir una lugar al sistema."
-
-#. module: enjoy
-#: model:ir.actions.act_window,help:enjoy.action_modelo
-msgid "Haga clic aquí para añadir una modelo al sistema."
-msgstr "Haga clic aquí para añadir una modelo al sistema."
-
-#. module: enjoy
-#: model:ir.actions.act_window,help:enjoy.action_servicio
-msgid "Haga clic aquí para añadir una servicio al sistema."
-msgstr "Haga clic aquí para añadir una servicio al sistema."
-
-#. module: enjoy
-#: model:ir.actions.act_window,help:enjoy.action_tablilla
-msgid "Haga clic aquí para añadir una tablilla al sistema."
-msgstr "Haga clic aquí para añadir una tablilla al sistema."
-
-#. module: enjoy
-#: model:ir.actions.act_window,help:enjoy.action_transfer
-msgid "Haga clic aquí para añadir una transfer al sistema."
-msgstr "Haga clic aquí para añadir una transfer al sistema."
-
-#. module: enjoy
-#: model:ir.actions.act_window,help:enjoy.action_viaje
-msgid "Haga clic aquí para añadir una viaje al sistema."
-msgstr "Haga clic aquí para añadir una viaje al sistema."
-
-#. module: enjoy
 #: selection:enjoy.casa,alojamiento:0
 #: model:ir.model.fields,field_description:enjoy.field_enjoy_banno_casa_id
 #: model:ir.model.fields,field_description:enjoy.field_enjoy_cama_casa_id
