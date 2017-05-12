@@ -24,7 +24,7 @@
                             color: #e78752
                             font-variant: normal;
                             font-weight: 500;
-                            line-height: 26.4px;
+                            line-height: 20.4px;
                             }
                             h3 {
                             font-family: Open Sans Condensed;
@@ -33,6 +33,14 @@
                             font-variant: normal;
                             font-weight: 500;
                             line-height: 15.4px;
+                            }
+                            h4 {
+                            font-family: Open Sans Condensed;
+                            font-size: 9px;
+                            font-style: normal;
+                            font-variant: normal;
+                            font-weight: 500;
+                            line-height: 10.4px;
                             }
                             p {
                             font-family: Open Sans Condensed;
@@ -109,15 +117,15 @@
                                     <div class="col-xs-2 text-right" style="padding-right:30px;">
                                         <t t-if="casa.nivel == 'e'">
                                             <img src="/enjoy/static/src/img/report/iconos/economic.jpg"
-                                                 style="height:80px"/>
+                                                 style="height:75px"/>
                                         </t>
                                         <t t-if="casa.nivel == 'c'">
                                             <img src="/enjoy/static/src/img/report/iconos/confort.jpg"
-                                                 style="height:80px"/>
+                                                 style="height:75px"/>
                                         </t>
                                         <t t-if="casa.nivel == 'l'">
                                             <img src="/enjoy/static/src/img/report/iconos/lujo.jpg"
-                                                 style="height:80px"/>
+                                                 style="height:75px"/>
                                         </t>
                                     </div>
                                     <div class="col-xs-6 text-right">
@@ -134,7 +142,7 @@
                                 <p style="color: e78752">
                                     ________________________________________________________________________________________________________________________________
                                 </p>
-                                <div class="col-xs-12" style="padding-top:30px;">
+                                <div class="col-xs-12" style="padding-top:15px;padding-left:5px;">
                                     <!--<div class="col-xs-12">-->
                                     <!--<span t-field="casa.image_lateral" t-field-options='{"widget": "image"}'-->
                                     <!--style="height: 45px;width:100%"/>-->
@@ -212,11 +220,11 @@
                                                             <tbody class="invoice_tbody">
                                                                 <tr t-foreach="casa.cama_ids" t-as="c">
                                                                     <td>
-                                                                        <span t-field="c.cantidad"/>
-                                                                    </td>
-                                                                    <td>
-                                                                        -
-                                                                        <span t-field="c.tipo"/>
+                                                                        <h4>
+                                                                            <span t-field="c.cantidad"/>
+                                                                            -
+                                                                            <span t-field="c.tipo"/>
+                                                                        </h4>
                                                                     </td>
                                                                 </tr>
                                                             </tbody>
@@ -228,11 +236,11 @@
                                                             <tbody class="invoice_tbody">
                                                                 <tr t-foreach="casa.banno_ids" t-as="b">
                                                                     <td>
-                                                                        <span t-field="b.cantidad"/>
-                                                                    </td>
-                                                                    <td>
-                                                                        -
-                                                                        <span t-field="b.tipo"/>
+                                                                        <h4>
+                                                                            <span t-field="b.cantidad"/>
+                                                                            -
+                                                                            <span t-field="b.tipo"/>
+                                                                        </h4>
                                                                     </td>
                                                                 </tr>
                                                             </tbody>
@@ -244,7 +252,9 @@
                                                             <tbody class="invoice_tbody">
                                                                 <tr t-foreach="casa.zona_ids" t-as="z">
                                                                     <td>
-                                                                        <span t-field="z.name"/>
+                                                                        <h4>
+                                                                            <span t-field="z.name"/>
+                                                                        </h4>
                                                                     </td>
                                                                 </tr>
                                                             </tbody>
@@ -258,10 +268,10 @@
                                                     <tbody class="invoice_tbody">
                                                         <tr t-foreach="casa.servicio_ids" t-as="s">
                                                             <td>
-                                                                <p>
+                                                                <h4>
                                                                     ►
                                                                     <span t-field="s.name"/>
-                                                                </p>
+                                                                </h4>
                                                             </td>
                                                         </tr>
                                                     </tbody>
@@ -269,6 +279,9 @@
                                             </div>
                                         </div>
                                     </div>
+                                    <p style="padding-top:15px;color: e78752;">
+                                        ____________________________________________________________________________________________________________________________
+                                    </p>
                                     <div class="row" style="padding-top:20px">
                                         <div class="col-xs-12" style="padding-top:20px;">
                                             <div class="col-xs-6"
