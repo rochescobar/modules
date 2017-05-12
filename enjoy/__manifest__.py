@@ -3,6 +3,7 @@
     'name' : 'ENJOY TRAVEL',
     'version' : '1.0',
     'summary': 'Sistema el control de autos y casas de renta',
+    'author': 'roche',
     'description': """
 ENJOY
 ====================

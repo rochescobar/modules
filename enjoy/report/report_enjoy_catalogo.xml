@@ -121,9 +121,9 @@
                                         </t>
                                     </div>
                                     <div class="col-xs-6 text-right">
-                                        <table>
+                                        <table class="text-right">
                                             <tr>
-                                                <td t-foreach="casa.servicio_ids" t-as="s">
+                                                <td t-foreach="casa.servicio_ids" t-as="s" class="text-right">
                                                     <span t-field="s.image_small"
                                                           t-field-options='{"widget": "image"}'/>
                                                 </td>
@@ -131,8 +131,9 @@
                                         </table>
                                     </div>
                                 </div>
-                                <img src="/enjoy/static/src/img/report/header.jpg"
-                                     style="height:15px; width:100%"/>
+                                <p style="color: e78752">
+                                    ________________________________________________________________________________________________________________________________
+                                </p>
                                 <div class="col-xs-12" style="padding-top:30px;">
                                     <!--<div class="col-xs-12">-->
                                     <!--<span t-field="casa.image_lateral" t-field-options='{"widget": "image"}'-->
@@ -140,35 +141,24 @@
                                     <!--</div>-->
                                     <div class="row" style="padding-button:20px;">
                                         <div class="col-xs-12">
-                                            <div class="col-xs-2 text-left" style=" background-color:f79147;">
+                                            <div class="col-xs-4 text-left">
                                                 <h2>
-                                                    <span style="color:ffffff">Location</span>
-                                                </h2>
-                                            </div>
-                                            <div class="col-xs-2">
-                                                <h3>
+                                                    <span style="color:c4691a">Location:</span>
                                                     <span t-field="casa.lugar.name"/>
-                                                </h3>
-                                            </div>
-                                            <div class="col-xs-3 text-left" style=" background-color:f79147;">
-                                                <h2>
-                                                    <span style="color:ffffff">It's perfect for</span>
                                                 </h2>
                                             </div>
-                                            <div class="col-xs-2">
-                                                <h3>
+                                            <div class="col-xs-4 text-left">
+                                                <h2>
+                                                    <span style="color:c4691a">It's perfect for:</span>
                                                     <span t-field="casa.para"/>
-                                                </h3>
-                                            </div>
-                                            <div class="col-xs-2 text-left" style=" background-color:f79147;">
-                                                <h2>
-                                                    <span style="color:ffffff">Price</span>
                                                 </h2>
                                             </div>
-                                            <div class="col-xs-1">
-                                                <h3>
-                                                    <span t-field="casa.precio"/>
-                                                </h3>
+                                            <div class="col-xs-4 text-left">
+                                                <h2>
+                                                    <span style="color:c4691a">Price:</span>
+                                                    <span t-field="casa.precio"
+                                                          t-options="{'widget': 'monetary', 'display_currency': res_company.currency_id}"/>
+                                                </h2>
                                             </div>
                                         </div>
                                         <div class="col-xs-12" style="padding-buttom:20px;">
@@ -176,8 +166,8 @@
                                                 <table class="col-xs-12">
                                                     <tbody class="invoice_tbody">
                                                         <tr>
-                                                            <td style="color:f79147;width: 40%;">
-                                                                <span style="font-size: 20px;">Tipo de Alojamiento
+                                                            <td style="color:c4691a;width: 40%;">
+                                                                <span style="font-size: 20px;">Type of accommodation:
                                                                 </span>
                                                             </td>
                                                             <td>
@@ -186,16 +176,16 @@
                                                             </td>
                                                         </tr>
                                                         <tr>
-                                                            <td style="color:f79147;width: 40%;">
-                                                                <span style="font-size: 20px;">Dispone de:</span>
+                                                            <td style="color:c4691a;width: 40%;">
+                                                                <span style="font-size: 20px;">Dispose of:</span>
                                                             </td>
                                                             <td>
                                                                 <span t-field="casa.dispone" style="font-size: 20px;"/>
                                                             </td>
                                                         </tr>
                                                         <tr>
-                                                            <td style="color:f79147;width: 40%;">
-                                                                <span style="font-size: 20px;">Cantidad de Dormitorios:
+                                                            <td style="color:c4691a;width: 40%;">
+                                                                <span style="font-size: 20px;">Number of Bedrooms:
                                                                 </span>
                                                             </td>
                                                             <td>
@@ -204,8 +194,8 @@
                                                             </td>
                                                         </tr>
                                                         <tr>
-                                                            <td style="color:f79147;width: 40%;">
-                                                                <span style="font-size: 20px;">Cantidad de Huespedes:
+                                                            <td style="color:c4691a;width: 40%;">
+                                                                <span style="font-size: 20px;">Number of Guests:
                                                                 </span>
                                                             </td>
                                                             <td>
@@ -217,7 +207,7 @@
                                                 </table>
                                                 <div class="col-xs-12" style="padding-top:20px;">
                                                     <div class="col-xs-4">
-                                                        <h3 style="color:f79147;">Camas</h3>
+                                                        <h3 style="color:c4691a;">Beds:</h3>
                                                         <table class="col-xs-12">
                                                             <tbody class="invoice_tbody">
                                                                 <tr t-foreach="casa.cama_ids" t-as="c">
@@ -233,7 +223,7 @@
                                                         </table>
                                                     </div>
                                                     <div class="col-xs-4">
-                                                        <h3 style="color:f79147;">Bannos</h3>
+                                                        <h3 style="color:c4691a;">Bathrooms:</h3>
                                                         <table class="col-xs-12">
                                                             <tbody class="invoice_tbody">
                                                                 <tr t-foreach="casa.banno_ids" t-as="b">
@@ -249,7 +239,7 @@
                                                         </table>
                                                     </div>
                                                     <div class="col-xs-4">
-                                                        <h3 style="color:f79147;">Areas</h3>
+                                                        <h3 style="color:c4691a;">Areas:</h3>
                                                         <table class="col-xs-12">
                                                             <tbody class="invoice_tbody">
                                                                 <tr t-foreach="casa.zona_ids" t-as="z">
@@ -263,13 +253,15 @@
                                                 </div>
                                             </div>
                                             <div class="col-xs-4" style="padding-top:50px;">
-                                                <h3 style="color:f79147;">Servises</h3>
+                                                <h3 style="color:c4691a;">Servises</h3>
                                                 <table class="col-xs-12">
                                                     <tbody class="invoice_tbody">
                                                         <tr t-foreach="casa.servicio_ids" t-as="s">
                                                             <td>
-                                                                ►
-                                                                <span t-field="s.name"/>
+                                                                <p>
+                                                                    ►
+                                                                    <span t-field="s.name"/>
+                                                                </p>
                                                             </td>
                                                         </tr>
                                                     </tbody>

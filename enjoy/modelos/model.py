@@ -348,6 +348,9 @@ class House(models.Model):
     @api.model
     def create(self, vals):
         tools.image_resize_images(vals)
+        if vals.get('image') != None:
+            vals['image'] = tools.image_resize_image(vals.get('image'), (300, 300))
+
         if vals.get('image1') != None:
             vals['image1'] = tools.image_resize_image(vals.get('image1'), (500, 300))
 
@@ -379,6 +382,9 @@ class House(models.Model):
     @api.multi
     def write(self, vals):
         tools.image_resize_images(vals)
+        if vals.get('image') != None:
+            vals['image'] = tools.image_resize_image(vals.get('image'), (300, 300))
+
         if vals.get('image1') != None:
             vals['image1'] = tools.image_resize_image(vals.get('image1'), (500, 300))
 
