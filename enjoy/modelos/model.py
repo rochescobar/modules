@@ -11,8 +11,6 @@ from odoo.modules.module import get_module_resource
 from datetime import date, datetime
 import time
 import logging
-import PIL
-from PIL import Image
 
 _logger = logging.getLogger(__name__)
 
@@ -291,7 +289,7 @@ class House(models.Model):
 
     @api.model
     def _default_image(self):
-        image_path = get_module_resource('enjoy', 'static/src/img', 'casa.jpg')
+        image_path = get_module_resource('enjoy', 'static/src/img/', 'casa.jpg')
         return tools.image_resize_image_big(open(image_path, 'rb').read().encode('base64'))
 
     propiedad = fields.Char('Property of', size=200, required=True)
@@ -350,6 +348,32 @@ class House(models.Model):
     @api.model
     def create(self, vals):
         tools.image_resize_images(vals)
+        if vals.get('image1') != None:
+            vals['image1'] = tools.image_resize_image(vals.get('image1'), (500, 300))
+
+        if vals.get('image2') != None:
+            vals['image2'] = tools.image_resize_image(vals.get('image2'), (500, 300))
+
+        if vals.get('image3') != None:
+            vals['image3'] = tools.image_resize_image(vals.get('image3'), (500, 300))
+
+        if vals.get('image4') != None:
+            vals['image4'] = tools.image_resize_image(vals.get('image4'), (500, 300))
+
+        if vals.get('image5') != None:
+            vals['image5'] = tools.image_resize_image(vals.get('image5'), (500, 300))
+
+        if vals.get('image6') != None:
+            vals['image6'] = tools.image_resize_image(vals.get('image6'), (500, 300))
+
+        if vals.get('image7') != None:
+            vals['image7'] = tools.image_resize_image(vals.get('image7'), (500, 300))
+
+        if vals.get('image8') != None:
+            vals['image8'] = tools.image_resize_image(vals.get('image8'), (500, 300))
+
+        if vals.get('image9') != None:
+            vals['image9'] = tools.image_resize_image(vals.get('image9'), (500, 300))
         return super(House, self).create(vals)
 
     @api.multi
