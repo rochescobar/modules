@@ -4,212 +4,278 @@
         <template id="report_enjoy_casa">
             <t t-call="report.html_container">
                 <t t-call="report.layout">
-                    <div class="page">
-                        <!--<div class="row">-->
-                        <!--<div class="col-xs-12">-->
-                        <img src="/enjoy/static/src/img/report/pag1.jpg"/>
-                        <!--<img class="img img-responsive" src="/enjoy/static/src/img/report/p1.jpg"/>-->
-                        <!--</div>-->
-                        <!--<div class="col-xs-6">-->
-                            <!--<img src="/enjoy/static/src/img/report/p2.jpg" style="width:100%;padding-top: 2px;"/>-->
-                        <!--</div>-->
-                        <!--<div class="col-xs-6">-->
-                            <!--<img src="/enjoy/static/src/img/report/p3.jpg" style="width:100%;padding-top: 2px;"/>-->
-                        <!--</div>-->
-                        <!--<div class="col-xs-12">-->
-                            <!--<img src="/enjoy/static/src/img/report/p4.jpg" style="width:100%;"/>-->
-                        <!--</div>-->
-                        <!--</div>-->
-                    </div>
-                    <div class="page">
-                        <!--<div class="row">-->
-                            <!--<div class="col-xs-12">-->
-                                <img src="/enjoy/static/src/img/report/pag2.jpg" style="width: 1000px;height: 1400px;"/>
-                            <!--</div>-->
-                        <!--</div>-->
-                    </div>
                     <t t-foreach="docs" t-as="o">
+                        <link rel="stylesheet" type="text/css"
+                              href="//fonts.googleapis.com/css?family=Open+Sans+Condensed"/>
+                        <style type="text/css">
+                            h1 {
+                            font-family: Open Sans Condensed;
+                            font-size: 40px;
+                            font-style: normal;
+                            color: #e78752
+                            font-variant: normal;
+                            font-weight: 500;
+                            line-height: 26.4px;
+                            }
+                            h2 {
+                            font-family: Open Sans Condensed;
+                            font-size: 19px;
+                            font-style: normal;
+                            color: #e78752
+                            font-variant: normal;
+                            font-weight: 500;
+                            line-height: 20.4px;
+                            }
+                            h3 {
+                            font-family: Open Sans Condensed;
+                            font-size: 14px;
+                            font-style: normal;
+                            font-variant: normal;
+                            font-weight: 500;
+                            line-height: 15.4px;
+                            }
+                            h4 {
+                            font-family: Open Sans Condensed;
+                            font-size: 9px;
+                            font-style: normal;
+                            font-variant: normal;
+                            font-weight: 500;
+                            line-height: 10.4px;
+                            }
+                            p {
+                            font-family: Open Sans Condensed;
+                            font-size: 14px;
+                            font-style: normal;
+                            font-variant: normal;
+                            font-weight: 400;
+                            line-height: 20px;
+                            }
+                            blockquote {
+                            font-family: Open Sans Condensed;
+                            font-size: 21px;
+                            font-style: normal;
+                            font-variant: normal;
+                            font-weight: 400;
+                            line-height: 30px;
+                            }
+                            pre {
+                            font-family: Open Sans Condensed;
+                            font-size: 13px;
+                            font-style: normal;
+                            font-variant: normal;
+                            font-weight: 400;
+                            line-height: 18.5667px;
+                            }
+                        </style>
                         <div class="page">
-                            <div class="row">
-                                <div class="col-xs-12 text-center">
-                                    <strong>
-                                        <h2>
-                                            Rent:
-                                            <label value=" "/>
-                                            <span t-field="o.name"/>
-                                        </h2>
-                                    </strong>
+                            <img src="/enjoy/static/src/img/report/header.jpg"
+                                 style="width: 110%;height: 70px;"/>
+                            <div class="col-xs-12" style="padding-bottom:20px">
+                                <div class="col-xs-4 text-center" style=" background-color:f79147;">
+                                    <h1 style="font-size:60px;">
+                                        <span t-field="o.name" style="padding-top:45px;color:ffffff"/>
+                                    </h1>
                                 </div>
-
-                                <div class="col-xs-12">
-                                    <span t-field="o.image1" t-field-options='{"widget": "image"}'
-                                          style="height: 45px;"/>
+                                <div class="col-xs-2 text-right" style="padding-right:30px;">
+                                    <t t-if="o.nivel == 'e'">
+                                        <img src="/enjoy/static/src/img/report/iconos/economic.jpg"
+                                             style="height:75px"/>
+                                    </t>
+                                    <t t-if="o.nivel == 'c'">
+                                        <img src="/enjoy/static/src/img/report/iconos/confort.jpg"
+                                             style="height:75px"/>
+                                    </t>
+                                    <t t-if="o.nivel == 'l'">
+                                        <img src="/enjoy/static/src/img/report/iconos/lujo.jpg"
+                                             style="height:75px"/>
+                                    </t>
                                 </div>
-                                <div class="col-xs-12">
-                                    <div class="col-xs-4" style="padding-top:40px;">
-                                        <span t-field="o.image" t-field-options='{"widget": "image"}'/>
+                                <div class="col-xs-6 text-right">
+                                    <table class="text-right">
+                                        <tr>
+                                            <td t-foreach="o.servicio_ids" t-as="s" class="text-right">
+                                                <span t-field="s.image_small"
+                                                      t-field-options='{"widget": "image"}'/>
+                                            </td>
+                                        </tr>
+                                    </table>
+                                </div>
+                            </div>
+                            <p style="color: e78752">
+                                ________________________________________________________________________________________________________________________________
+                            </p>
+                            <div class="col-xs-12" style="padding-top:15px;padding-left:5px;">
+                                <!--<div class="col-xs-12">-->
+                                <!--<span t-field="o.image_lateral" t-field-options='{"widget": "image"}'-->
+                                <!--style="height: 45px;width:100%"/>-->
+                                <!--</div>-->
+                                <div class="row" style="padding-button:20px;">
+                                    <div class="col-xs-12">
+                                        <div class="col-xs-4 text-left">
+                                            <h2>
+                                                <span style="color:c4691a">Location:</span>
+                                                <span t-field="o.lugar.name"/>
+                                            </h2>
+                                        </div>
+                                        <div class="col-xs-4 text-left">
+                                            <h2>
+                                                <span style="color:c4691a">It's perfect for:</span>
+                                                <span t-field="o.para"/>
+                                            </h2>
+                                        </div>
+                                        <div class="col-xs-4 text-left">
+                                            <h2>
+                                                <span style="color:c4691a">Price:</span>
+                                                <span t-esc="o.get_commision()"
+                                                      t-options="{'widget': 'monetary', 'display_currency': res_company.currency_id}"/>
+                                            </h2>
+                                        </div>
                                     </div>
-                                    <div class="col-xs-5" style="padding-top:50px;">
-                                        <div class="col-xs-12">
+                                    <div class="col-xs-12" style="padding-buttom:20px;">
+                                        <div class="col-xs-8" style="padding-top:50px;">
                                             <table class="col-xs-12">
                                                 <tbody class="invoice_tbody">
                                                     <tr>
-                                                        <td style="padding-right: 110px;">
-                                                            <strong>Property:</strong>
+                                                        <td style="color:c4691a;width: 40%;">
+                                                            <span style="font-size: 20px;">Type of accommodation:
+                                                            </span>
                                                         </td>
                                                         <td>
-                                                            <span t-field="o.propiedad"/>
-                                                        </td>
-
-                                                    </tr>
-                                                    <tr>
-                                                        <td>
-                                                            <strong>Address</strong>
-                                                        </td>
-                                                        <td>
-                                                            <span t-field="o.dir"/>
+                                                            <span t-field="o.alojamiento"
+                                                                  style="font-size: 20px;"/>
                                                         </td>
                                                     </tr>
                                                     <tr>
-                                                        <td>
-                                                            <strong>Phone</strong>
+                                                        <td style="color:c4691a;width: 40%;">
+                                                            <span style="font-size: 20px;">Dispose of:</span>
                                                         </td>
                                                         <td>
-                                                            <span t-field="o.phone"/>
-                                                        </td>
-                                                    </tr>
-                                                    <tr>
-                                                        <td>
-                                                            <strong>Type of accommodation</strong>
-                                                        </td>
-                                                        <td>
-                                                            <span t-field="o.alojamiento"/>
+                                                            <span t-field="o.dispone" style="font-size: 20px;"/>
                                                         </td>
                                                     </tr>
                                                     <tr>
-                                                        <td>
-                                                            <strong>Dispose of:</strong>
+                                                        <td style="color:c4691a;width: 40%;">
+                                                            <span style="font-size: 20px;">Number of Bedrooms:
+                                                            </span>
                                                         </td>
                                                         <td>
-                                                            <span t-field="o.dispone"/>
-                                                        </td>
-                                                    </tr>
-                                                    <tr>
-                                                        <td>
-                                                            <strong>Number of Bedrooms:</strong>
-                                                        </td>
-                                                        <td>
-                                                            <span t-field="o.dormitorios"/>
+                                                            <span t-field="o.dormitorios"
+                                                                  style="font-size: 20px;"/>
                                                         </td>
                                                     </tr>
                                                     <tr>
-                                                        <td>
-                                                            <strong>Number of Guests:</strong>
+                                                        <td style="color:c4691a;width: 40%;">
+                                                            <span style="font-size: 20px;">Number of Guests:
+                                                            </span>
                                                         </td>
                                                         <td>
-                                                            <span t-field="o.capacidad"/>
+                                                            <span t-field="o.capacidad"
+                                                                  style="font-size: 20px;"/>
                                                         </td>
                                                     </tr>
-                                                    <tr>
+                                                </tbody>
+                                            </table>
+                                            <div class="col-xs-12" style="padding-top:20px;">
+                                                <div class="col-xs-4">
+                                                    <h3 style="color:c4691a;">Beds:</h3>
+                                                    <table class="col-xs-12">
+                                                        <tbody class="invoice_tbody">
+                                                            <tr t-foreach="o.cama_ids" t-as="c">
+                                                                <td>
+                                                                    <h4>
+                                                                        <span t-field="c.cantidad"/>
+                                                                        -
+                                                                        <span t-field="c.tipo"/>
+                                                                    </h4>
+                                                                </td>
+                                                            </tr>
+                                                        </tbody>
+                                                    </table>
+                                                </div>
+                                                <div class="col-xs-4">
+                                                    <h3 style="color:c4691a;">Bathrooms:</h3>
+                                                    <table class="col-xs-12">
+                                                        <tbody class="invoice_tbody">
+                                                            <tr t-foreach="o.banno_ids" t-as="b">
+                                                                <td>
+                                                                    <h4>
+                                                                        <span t-field="b.cantidad"/>
+                                                                        -
+                                                                        <span t-field="b.tipo"/>
+                                                                    </h4>
+                                                                </td>
+                                                            </tr>
+                                                        </tbody>
+                                                    </table>
+                                                </div>
+                                                <div class="col-xs-4">
+                                                    <h3 style="color:c4691a;">Areas:</h3>
+                                                    <table class="col-xs-12">
+                                                        <tbody class="invoice_tbody">
+                                                            <tr t-foreach="o.zona_ids" t-as="z">
+                                                                <td>
+                                                                    <h4>
+                                                                        <span t-field="z.name"/>
+                                                                    </h4>
+                                                                </td>
+                                                            </tr>
+                                                        </tbody>
+                                                    </table>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="col-xs-4" style="padding-top:50px;">
+                                            <h3 style="color:c4691a;">Servises</h3>
+                                            <table class="col-xs-12">
+                                                <tbody class="invoice_tbody">
+                                                    <tr t-foreach="o.servicio_ids" t-as="s">
                                                         <td>
-                                                            <strong>It is perfect for:</strong>
-                                                        </td>
-                                                        <td>
-                                                            <span t-field="o.para"/>
+                                                            <h4>
+                                                                ►
+                                                                <span t-field="s.name"/>
+                                                            </h4>
                                                         </td>
                                                     </tr>
                                                 </tbody>
                                             </table>
                                         </div>
-                                    </div>
-                                    <div class="col-xs-3" style="padding-top:50px;">
-                                        <table class="col-xs-12">
-                                            <thead class="invoice_thead">
-                                                <tr>
-                                                    <th>Servicios</th>
-                                                </tr>
-                                            </thead>
-                                            <tbody class="invoice_tbody">
-                                                <tr t-foreach="o.servicio_ids" t-as="s">
-                                                    <td>
-                                                        ►
-                                                        <span t-field="s.name"/>
-                                                    </td>
-                                                </tr>
-                                            </tbody>
-                                        </table>
                                     </div>
                                 </div>
-                                <div class="col-xs-12">
-                                    <div class="col-xs-6" style="padding-top:20px;">
-                                        <div class="col-xs-12">
-                                            <div class="col-xs-4">
-                                                <strong>Beds</strong>
-                                                <table class="col-xs-12">
-                                                    <!--<thead class="invoice_thead">-->
-                                                    <!--<tr>-->
-                                                    <!--<th>Cantidad</th>-->
-                                                    <!--<th>Tipo</th>-->
-                                                    <!--</tr>-->
-                                                    <!--</thead>-->
-                                                    <tbody class="invoice_tbody">
-                                                        <tr t-foreach="o.cama_ids" t-as="c">
-                                                            <td>
-                                                                <span t-field="c.cantidad"/>
-                                                            </td>
-                                                            <td>
-                                                                -
-                                                                <span t-field="c.tipo"/>
-                                                            </td>
-                                                        </tr>
-                                                    </tbody>
-                                                </table>
-                                            </div>
-                                            <div class="col-xs-4">
-                                                <strong>Baños</strong>
-                                                <table class="col-xs-12">
-                                                    <!--<thead class="invoice_thead">-->
-                                                    <!--<tr>-->
-                                                    <!--<th>Cantidad</th>-->
-                                                    <!--<th>Tipo</th>-->
-                                                    <!--</tr>-->
-                                                    <!--</thead>-->
-                                                    <tbody class="invoice_tbody">
-                                                        <tr t-foreach="o.banno_ids" t-as="b">
-                                                            <td>
-                                                                <span t-field="b.cantidad"/>
-                                                            </td>
-                                                            <td>
-                                                                -
-                                                                <span t-field="b.tipo"/>
-                                                            </td>
-                                                        </tr>
-                                                    </tbody>
-                                                </table>
-                                            </div>
-                                            <table class="col-xs-4">
-                                                <thead class="invoice_thead">
-                                                    <tr>
-                                                        <th>Areas</th>
-                                                    </tr>
-                                                </thead>
-                                                <tbody class="invoice_tbody">
-                                                    <tr t-foreach="o.zona_ids" t-as="z">
-                                                        <td>
-                                                            <span t-field="z.name"/>
-                                                        </td>
-                                                    </tr>
-                                                </tbody>
-                                            </table>
+                                <p style="padding-top:15px;color: e78752;">
+                                    ____________________________________________________________________________________________________________________________
+                                </p>
+                                <div class="row" style="padding-top:20px">
+                                    <div class="col-xs-12" style="padding-top:20px;">
+                                        <div class="col-xs-6"
+                                             style="padding:10px;">
+                                            <span t-field="o.image1" t-field-options='{"widget": "image"}'/>
                                         </div>
-                                        <div class="col-xs-12" style="padding-top:30px;">
+                                        <div class="col-xs-6"
+                                             style="padding:10px;">
                                             <span t-field="o.image2" t-field-options='{"widget": "image"}'/>
                                         </div>
                                     </div>
-                                    <div class="col-xs-6" style="padding-top:10px;">
-                                        <span t-field="o.image3" t-field-options='{"widget": "image"}'/>
+                                    <div class="col-xs-12">
+                                        <div class=" col-xs-4" style="padding:10px;">
+                                            <span t-field="o.image3" t-field-options='{"widget": "image"}'/>
+                                        </div>
+                                        <div class="col-xs-4" style="padding:10px;">
+                                            <span t-field="o.image4" t-field-options='{"widget": "image"}'/>
+                                        </div>
+                                        <div class="col-xs-4" style="padding:10px;">
+                                            <span t-field="o.image5" t-field-options='{"widget": "image"}'/>
+                                        </div>
                                     </div>
-
+                                    <div class="col-xs-12">
+                                        <div class="col-xs-6"
+                                             style="padding:10px;">
+                                            <span t-field="o.image6" t-field-options='{"widget": "image"}'/>
+                                        </div>
+                                        <div class="col-xs-6"
+                                             style="padding:10px;">
+                                            <span t-field="o.image7" t-field-options='{"widget": "image"}'/>
+                                        </div>
+                                    </div>
                                 </div>
                             </div>
                         </div>

@@ -296,7 +296,6 @@ class House(models.Model):
     name = fields.Char('Property Name ', size=200, required=True)
     dir = fields.Text('Address', size=200)
     lugar = fields.Many2one('enjoy.lugar', 'Location')
-    # catalogo_id = Many2many('enjoy.catalogo', string='Catálogos')
     provincia = fields.Char('Province', related='lugar.provincia_id.name', store=True)
     phone = fields.Char('Phone', size=50, required=True)
     alojamiento = fields.Selection([('casa', 'House'), ('apto', 'Apartment')], 'Type of accommodation',
@@ -315,7 +314,6 @@ class House(models.Model):
     para = fields.Selection([('f', 'Family'), ('g', 'Groups'), ('m', 'Pets')], 'Is perfect for',
                             required=True)
     precio = fields.Integer('Price', required=True, default=0)
-    # comision = fields.Integer('Commission', required=True, default=0)
     fpago = fields.Selection([('e', 'Cash'), ('t', 'Card')], 'Way to pay', required=True)
     nivel = fields.Selection([('e', 'Economic'), ('c', 'Confort'), ('l', 'luxurious')], 'Level',
                              required=True)
@@ -412,6 +410,13 @@ class House(models.Model):
         if vals.get('image9') != None:
             vals['image9'] = tools.image_resize_image(vals.get('image9'), (500, 300))
         return super(House, self).write(vals)
+
+    def get_commision(self):
+        aux = self.env['enjoy.comision'].search([('user_id', '=', self.env.user.id)])
+        if aux:
+            return self.precio + aux.comision
+        else:
+            return self.precio
 
     _sql_constraints = [
         ('key_unique', 'UNIQUE(name)', "There is a house with that name"),
