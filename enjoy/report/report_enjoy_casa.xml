@@ -126,6 +126,7 @@
                                         <div class="col-xs-4 text-left">
                                             <h2>
                                                 <span style="color:c4691a">Price:</span>
+                                                <span t-esc="o.open_image()"/>
                                                 <span t-esc="o.get_commision()"
                                                       t-options="{'widget': 'monetary', 'display_currency': res_company.currency_id}"/>
                                             </h2>

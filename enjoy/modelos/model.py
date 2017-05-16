@@ -333,6 +333,21 @@ class House(models.Model):
     image_medium = fields.Binary("Medium-sized photo", attachment=True)
     image_small = fields.Binary("Small-sized photo", attachment=True)
 
+    def open_image(self):
+        self.ensure_one()
+        # decode the base64 encoded data
+
+        self.image1 = tools.image_resize_image(self.image1, (500, 300))
+        self.image2 = tools.image_resize_image(self.image2, (500, 300))
+        self.image3 = tools.image_resize_image(self.image3, (500, 300))
+        self.image4 = tools.image_resize_image(self.image4, (500, 300))
+        self.image5 = tools.image_resize_image(self.image5, (500, 300))
+        self.image6 = tools.image_resize_image(self.image6, (500, 300))
+        self.image7 = tools.image_resize_image(self.image7, (500, 300))
+        self.image8 = tools.image_resize_image(self.image8, (500, 300))
+        self.image9 = tools.image_resize_image(self.image9, (500, 300))
+
+
     @api.one
     @api.depends('nivel')
     def _getnombre(self):
