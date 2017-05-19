@@ -20,7 +20,7 @@
         <report
                 id="action_report_casa"
                 model="enjoy.casa"
-                string="Export Catalog"
+                string="Export Houses"
                 report_type="qweb-pdf"
                 name="enjoy.report_enjoy_casa"
                 file="enjoy.report_enjoy_casa"

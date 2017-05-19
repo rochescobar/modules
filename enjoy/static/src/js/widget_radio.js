@@ -1,16 +1,15 @@
-openerp.web_widget_radio = function (instance)
-{
+openerp.web_widget_radio = function (instance) {
     instance.web.form.widgets.add('radio', 'instance.web_widget_radio.FieldRadio');
     instance.web_widget_radio.FieldRadio = instance.web.form.AbstractField.extend(instance.web.form.ReinitializeFieldMixin, {
         template: 'FieldRadio',
         events: {
             'click input': 'click_change_value'
         },
-        init: function(field_manager, node) {
+        init: function (field_manager, node) {
             /* Radio button widget: Attributes options:
-            * - "horizontal" to display in column
-            * - "no_radiolabel" don't display text values
-            */
+             * - "horizontal" to display in column
+             * - "no_radiolabel" don't display text values
+             */
             this._super(field_manager, node);
             this.selection = _.clone(this.field.selection) || [];
             this.domain = false;
@@ -35,13 +34,13 @@ openerp.web_widget_radio = function (instance)
          *  For selection fields: this is directly given by this.field.selection
          *  For many2one fields:  perform a search on the relation of the many2one field
          */
-        get_selection: function() {
+        get_selection: function () {
             var self = this;
             var selection = [];
             var def = $.Deferred();
             if (self.field.type == "many2one") {
                 var domain = instance.web.pyeval.eval('domain', this.build_domain()) || [];
-                if (! _.isEqual(self.domain, domain)) {
+                if (!_.isEqual(self.domain, domain)) {
                     self.domain = domain;
                     var ds = new instance.web.DataSetStatic(self, self.field.relation, self.build_context());
                     ds.call('search', [self.domain])
@@ -61,7 +60,7 @@ openerp.web_widget_radio = function (instance)
                 def.resolve();
             }
             return def.then(function () {
-                if (! _.isEqual(selection, self.selection)) {
+                if (!_.isEqual(selection, self.selection)) {
                     self.selection = _.clone(selection);
                     self.renderElement();
                     self.render_value();
@@ -71,7 +70,9 @@ openerp.web_widget_radio = function (instance)
         set_value: function (value_) {
             if (value_) {
                 if (this.field.type == "selection") {
-                    value_ = _.find(this.field.selection, function (sel) { return sel[0] == value_;});
+                    value_ = _.find(this.field.selection, function (sel) {
+                        return sel[0] == value_;
+                    });
                 }
                 else if (!this.selection.length) {
                     this.selection = [value_];
@@ -88,9 +89,22 @@ openerp.web_widget_radio = function (instance)
             this.$el.toggleClass("oe_readonly", this.get('effective_readonly'));
             this.$("input:checked").prop("checked", false);
             if (this.get_value()) {
-                this.$("input").filter(function () {return this.value == self.get_value();}).prop("checked", true);
+                this.$("input").filter(function () {
+                    return this.value == self.get_value();
+                }).prop("checked", true);
                 this.$(".oe_radio_readonly").text(this.get('value') ? this.get('value')[1] : "");
             }
         }
     });
 };
+openerp.enjoy = function (instance, local) {
+    instance.web_kanban.KanbanView = instance.web_kanban.KanbanView.extend({
+        init: function (parent, dataset, view_id, options) {
+            if (dataset._model.name == 'enjoy.casa.kanban') {
+                options.limit = 5;    //Imposed limit for my particular object
+            }
+            this._super(parent, dataset, view_id, options);
+        }
+    });
+    instance.web.views.add('kanban_enjoy_limit', 'instance.enjoy.KanbanView');
+}

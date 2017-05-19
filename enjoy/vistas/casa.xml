@@ -35,6 +35,7 @@
         <record id="enjoy_kanban_view_casas" model="ir.ui.view">
             <field name="name">enjoy.casa.kanban</field>
             <field name="model">enjoy.casa</field>
+            <field name="limit">5</field>
             <field name="priority">10</field>
             <field name="arch" type="xml">
                 <kanban class="o_hr_employee_kanban">
@@ -53,9 +54,8 @@
                                         <li t-if="record.lugar.raw_value">
                                             <field name="lugar"/>
                                         </li>
-                                        <li t-if="record.phone.raw_value" groups="enjoy.group_enjoy_admin">
-                                            <i class="fa fa-phone"></i>
-                                            <field name="phone"/>
+                                        <li t-if="record.capacidad.raw_value" groups="enjoy.group_enjoy_admin">
+                                            <field name="capacidad"/>
                                         </li>
                                         <li>
                                             <field name="dispone"/>
@@ -86,11 +86,13 @@
                             </h1>
                         </div>
                         <group string="Personal information" col="12">
-                            <field name="propiedad" colspan="3" groups="enjoy.group_enjoy_admin"/>
-                            <field name="phone" colspan="3" groups="enjoy.group_enjoy_admin"/>
-                            <field name="dir" colspan="6" groups="enjoy.group_enjoy_admin"/>
+                            <field name="propiedad" colspan="6" groups="enjoy.group_enjoy_admin"/>
+                            <field name="interest" colspan="6"/>
                             <field name="lugar" colspan="3"/>
                             <field name="provincia" colspan="3" readonly="True"/>
+                            <!--<field name="phone" colspan="3" groups="enjoy.group_enjoy_admin"/>-->
+
+
                             <!--<field name="catalogo_id" colspan="6"/>-->
 
                         </group>
@@ -167,13 +169,10 @@
             <field name="type">tree</field>
             <field name="target">new</field>
             <field name="arch" type="xml">
-                <tree string="casa" default_order='name'>
+                <tree string="casa" default_order='nivel, name'>
                     <field name="name"/>
-                    <!--<field name="propiedad"/>-->
                     <field name="alojamiento"/>
                     <field name="dispone"/>
-                    <!--<field name="capacidad"/>-->
-                    <!--<field name="dormitorios"/>-->
                     <field name="provincia"/>
                     <field name="lugar"/>
                     <field name="precio"/>
@@ -187,6 +186,7 @@
         <record model="ir.actions.act_window" id="action_casa">
             <field name="name">Houses</field>
             <field name="res_model">enjoy.casa</field>
+            <field name="limit">10</field>
             <field name="view_mode">kanban,tree,form</field>
         </record>
 

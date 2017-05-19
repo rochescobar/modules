@@ -71,10 +71,12 @@
                             <img src="/enjoy/static/src/img/report/header.jpg"
                                  style="width: 110%;height: 70px;"/>
                             <div class="col-xs-12" style="padding-bottom:20px">
-                                <div class="col-xs-4 text-center" style=" background-color:f79147;">
-                                    <h1 style="font-size:60px;">
-                                        <span t-field="o.name" style="padding-top:45px;color:ffffff"/>
-                                    </h1>
+                                <div class="col-xs-6 text-left">
+                                    <font t-field="o.name"
+                                          style="font-size:60px;background-color:f79147; color: ffffff;"/>
+                                    <!--<h1 style="">-->
+                                    <!--<span t-field="o.name" style="padding-top:45px;color:ffffff"/>-->
+                                    <!--</h1>-->
                                 </div>
                                 <div class="col-xs-2 text-right" style="padding-right:30px;">
                                     <t t-if="o.nivel == 'e'">
@@ -90,7 +92,7 @@
                                              style="height:75px"/>
                                     </t>
                                 </div>
-                                <div class="col-xs-6 text-right">
+                                <div class="col-xs-4 text-right">
                                     <table class="text-right">
                                         <tr>
                                             <td t-foreach="o.servicio_ids" t-as="s" class="text-right">
@@ -126,20 +128,20 @@
                                         <div class="col-xs-4 text-left">
                                             <h2>
                                                 <span style="color:c4691a">Price:</span>
-                                                <span t-esc="o.open_image()"/>
                                                 <span t-esc="o.get_commision()"
                                                       t-options="{'widget': 'monetary', 'display_currency': res_company.currency_id}"/>
                                             </h2>
                                         </div>
                                     </div>
                                     <div class="col-xs-12" style="padding-buttom:20px;">
-                                        <div class="col-xs-8" style="padding-top:50px;">
+                                        <div class="col-xs-6" style="padding-top:40px;">
                                             <table class="col-xs-12">
                                                 <tbody class="invoice_tbody">
                                                     <tr>
-                                                        <td style="color:c4691a;width: 40%;">
-                                                            <span style="font-size: 20px;">Type of accommodation:
-                                                            </span>
+                                                        <td style="width: 60%;">
+                                                            <font style="font-size:20px;background-color:f79147; color: ffffff;">
+                                                                Type of accommodation:
+                                                            </font>
                                                         </td>
                                                         <td>
                                                             <span t-field="o.alojamiento"
@@ -147,17 +149,20 @@
                                                         </td>
                                                     </tr>
                                                     <tr>
-                                                        <td style="color:c4691a;width: 40%;">
-                                                            <span style="font-size: 20px;">Dispose of:</span>
+                                                        <td style="width: 60%;">
+                                                            <font style="font-size:20px;background-color:f79147; color: ffffff;">
+                                                                Dispose of:
+                                                            </font>
                                                         </td>
                                                         <td>
                                                             <span t-field="o.dispone" style="font-size: 20px;"/>
                                                         </td>
                                                     </tr>
                                                     <tr>
-                                                        <td style="color:c4691a;width: 40%;">
-                                                            <span style="font-size: 20px;">Number of Bedrooms:
-                                                            </span>
+                                                        <td style="width: 60%;">
+                                                            <font style="font-size:20px;background-color:f79147; color: ffffff;">
+                                                                Number of Bedrooms:
+                                                            </font>
                                                         </td>
                                                         <td>
                                                             <span t-field="o.dormitorios"
@@ -165,9 +170,10 @@
                                                         </td>
                                                     </tr>
                                                     <tr>
-                                                        <td style="color:c4691a;width: 40%;">
-                                                            <span style="font-size: 20px;">Number of Guests:
-                                                            </span>
+                                                        <td style="width: 60%;">
+                                                            <font style="font-size:20px;background-color:f79147; color: ffffff;">
+                                                                Number of Guests:
+                                                            </font>
                                                         </td>
                                                         <td>
                                                             <span t-field="o.capacidad"
@@ -176,10 +182,35 @@
                                                     </tr>
                                                 </tbody>
                                             </table>
-                                            <div class="col-xs-12" style="padding-top:20px;">
-                                                <div class="col-xs-4">
-                                                    <h3 style="color:c4691a;">Beds:</h3>
-                                                    <table class="col-xs-12">
+                                        </div>
+                                        <div class="col-xs-6" style="padding-top:40px;">
+                                            <font style="font-size:20px;background-color:f79147; color: ffffff;">
+                                                Servises
+                                            </font>
+                                            <h4>
+                                                <t t-foreach="o.servicio_ids" t-as="s">
+                                                    <span t-field="s.name"/>
+                                                    <label value=" "/>
+                                                </t>
+                                            </h4>
+                                            <font style="font-size:20px;background-color:f79147; color: ffffff;">
+                                                Nearby places of interest
+                                            </font>
+                                            <h4>
+                                                <span t-field="o.interest"/>
+                                            </h4>
+                                        </div>
+                                    </div>
+                                    <div class="col-xs-12" style="padding-buttom:20px;padding-top:20px;padding-left:40px;">
+                                        <table class="col-xs-12">
+                                            <tr>
+                                                <td style="width: 15%">
+                                                    <font style="font-size:20px;background-color:f79147; color: ffffff;">
+                                                        Beds:
+                                                    </font>
+                                                </td>
+                                                <td style="width: 18%">
+                                                    <table>
                                                         <tbody class="invoice_tbody">
                                                             <tr t-foreach="o.cama_ids" t-as="c">
                                                                 <td>
@@ -192,10 +223,14 @@
                                                             </tr>
                                                         </tbody>
                                                     </table>
-                                                </div>
-                                                <div class="col-xs-4">
-                                                    <h3 style="color:c4691a;">Bathrooms:</h3>
-                                                    <table class="col-xs-12">
+                                                </td>
+                                                <td style="width: 15%">
+                                                    <font style="font-size:20px;background-color:f79147; color: ffffff;">
+                                                        Bathrooms:
+                                                    </font>
+                                                </td>
+                                                <td style="width: 19">
+                                                    <table>
                                                         <tbody class="invoice_tbody">
                                                             <tr t-foreach="o.banno_ids" t-as="b">
                                                                 <td>
@@ -208,10 +243,14 @@
                                                             </tr>
                                                         </tbody>
                                                     </table>
-                                                </div>
-                                                <div class="col-xs-4">
-                                                    <h3 style="color:c4691a;">Areas:</h3>
-                                                    <table class="col-xs-12">
+                                                </td>
+                                                <td style="width: 15%">
+                                                    <font style="font-size:20px;background-color:f79147; color: ffffff;">
+                                                        Areas:
+                                                    </font>
+                                                </td>
+                                                <td style="width: 18%">
+                                                    <table>
                                                         <tbody class="invoice_tbody">
                                                             <tr t-foreach="o.zona_ids" t-as="z">
                                                                 <td>
@@ -222,30 +261,15 @@
                                                             </tr>
                                                         </tbody>
                                                     </table>
-                                                </div>
-                                            </div>
-                                        </div>
-                                        <div class="col-xs-4" style="padding-top:50px;">
-                                            <h3 style="color:c4691a;">Servises</h3>
-                                            <table class="col-xs-12">
-                                                <tbody class="invoice_tbody">
-                                                    <tr t-foreach="o.servicio_ids" t-as="s">
-                                                        <td>
-                                                            <h4>
-                                                                ►
-                                                                <span t-field="s.name"/>
-                                                            </h4>
-                                                        </td>
-                                                    </tr>
-                                                </tbody>
-                                            </table>
-                                        </div>
+                                                </td>
+                                            </tr>
+                                        </table>
                                     </div>
                                 </div>
                                 <p style="padding-top:15px;color: e78752;">
                                     ____________________________________________________________________________________________________________________________
                                 </p>
-                                <div class="row" style="padding-top:20px">
+                                <div class="row" style="padding-top:10px">
                                     <div class="col-xs-12" style="padding-top:20px;">
                                         <div class="col-xs-6"
                                              style="padding:10px;">

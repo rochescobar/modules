@@ -232,7 +232,7 @@ class Commission(models.Model):
     def commission_house(self):
         house_ids = self.env['enjoy.casa'].search([('id', '!=', self.casa_id.id)])
         for home in house_ids:
-            aux = self.env['enjoy.comision'].search([('casa_id', '=', home.id)])
+            aux = self.env['enjoy.comision'].search([('casa_id', '=', home.id), ('user_id', '=', self.env.user.id)])
             if aux:
                 aux.comision = self.comision
             else:
@@ -241,7 +241,7 @@ class Commission(models.Model):
                     'casa_id': home.id,
                     'user_id': self.env.user.id,
                 })
-                # raise Warning
+            # raise osv.except_osv(_("Success !"), _(" OK."))
 
     @api.one
     @api.depends('casa_id')
@@ -285,7 +285,8 @@ class Catalogo(models.Model):
 
 class House(models.Model):
     _name = 'enjoy.casa'
-    _description = 'Registro de casa '
+    _description = 'Registro de casa'
+    _order = 'nivel'
 
     @api.model
     def _default_image(self):
@@ -295,9 +296,10 @@ class House(models.Model):
     propiedad = fields.Char('Property of', size=200, required=True)
     name = fields.Char('Property Name ', size=200, required=True)
     dir = fields.Text('Address', size=200)
+    interest = fields.Text('Nearby places of interest', size=500)
     lugar = fields.Many2one('enjoy.lugar', 'Location')
     provincia = fields.Char('Province', related='lugar.provincia_id.name', store=True)
-    phone = fields.Char('Phone', size=50, required=True)
+    phone = fields.Char('Phone', size=50)
     alojamiento = fields.Selection([('casa', 'House'), ('apto', 'Apartment')], 'Type of accommodation',
                                    required=True)
     dispone = fields.Selection(
@@ -346,7 +348,6 @@ class House(models.Model):
         self.image7 = tools.image_resize_image(self.image7, (500, 300))
         self.image8 = tools.image_resize_image(self.image8, (500, 300))
         self.image9 = tools.image_resize_image(self.image9, (500, 300))
-
 
     @api.one
     @api.depends('nivel')
@@ -427,7 +428,7 @@ class House(models.Model):
         return super(House, self).write(vals)
 
     def get_commision(self):
-        aux = self.env['enjoy.comision'].search([('user_id', '=', self.env.user.id)])
+        aux = self.env['enjoy.comision'].search([('user_id', '=', self.env.user.id), ('casa_id', '=', self.id)])
         if aux:
             return self.precio + aux.comision
         else:
