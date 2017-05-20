@@ -60,7 +60,12 @@ mejias1990
 mejias1990**
 90062639427
 
+root
+g7Zq9u8h
+
 
 			git clone https://github.com/rochescobar/modules.git
 			git pull https://github.com/rochescobar/modules.git
 			git push https://github.com/rochescobar/modules.git
+
+			sudo systemctl restart odoo-server

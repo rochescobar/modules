@@ -144,7 +144,7 @@
                             <p style="color: e78752">
                                 ________________________________________________________________________________________________________________________________
                             </p>
-                            <div class="col-xs-12" style="padding-top:15px;padding-left:5px;">
+                            <div class="col-xs-12" style="padding-top:10px;padding-left:5px;">
                                 <!--<div class="col-xs-12">-->
                                 <!--<span t-field="casa.image_lateral" t-field-options='{"widget": "image"}'-->
                                 <!--style="height: 45px;width:100%"/>-->

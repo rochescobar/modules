@@ -71,14 +71,14 @@
                             <img src="/enjoy/static/src/img/report/header.jpg"
                                  style="width: 110%;height: 70px;"/>
                             <div class="col-xs-12" style="padding-bottom:20px">
-                                <div class="col-xs-6 text-left">
+                                <div class="col-xs-8 text-left">
                                     <font t-field="o.name"
-                                          style="font-size:60px;background-color:f79147; color: ffffff;"/>
+                                          style="font-size:55px;background-color:f79147; color: ffffff;"/>
                                     <!--<h1 style="">-->
                                     <!--<span t-field="o.name" style="padding-top:45px;color:ffffff"/>-->
                                     <!--</h1>-->
                                 </div>
-                                <div class="col-xs-2 text-right" style="padding-right:30px;">
+                                <div class="col-xs-1 text-right" style="padding-right:30px;">
                                     <t t-if="o.nivel == 'e'">
                                         <img src="/enjoy/static/src/img/report/iconos/economic.jpg"
                                              style="height:75px"/>
@@ -92,12 +92,17 @@
                                              style="height:75px"/>
                                     </t>
                                 </div>
-                                <div class="col-xs-4 text-right">
+                                <div class="col-xs-3 text-right">
                                     <table class="text-right">
                                         <tr>
-                                            <td t-foreach="o.servicio_ids" t-as="s" class="text-right">
-                                                <span t-field="s.image_small"
-                                                      t-field-options='{"widget": "image"}'/>
+                                            <td t-if="o.interest">
+                                                <span>
+                                                    <img src="/enjoy/static/src/img/report/iconos/cerca.jpg"
+                                                         class="img img-responsive"/>
+                                                </span>
+                                            </td>
+                                            <td t-foreach="o.servicio_ids" t-as="s">
+                                                <span t-field="s.image_small" t-field-options='{"widget": "image"}'/>
                                             </td>
                                         </tr>
                                     </table>
@@ -106,7 +111,7 @@
                             <p style="color: e78752">
                                 ________________________________________________________________________________________________________________________________
                             </p>
-                            <div class="col-xs-12" style="padding-top:15px;padding-left:5px;">
+                            <div class="col-xs-12" style="padding-top:5px;padding-left:5px;">
                                 <!--<div class="col-xs-12">-->
                                 <!--<span t-field="o.image_lateral" t-field-options='{"widget": "image"}'-->
                                 <!--style="height: 45px;width:100%"/>-->
@@ -201,7 +206,8 @@
                                             </h4>
                                         </div>
                                     </div>
-                                    <div class="col-xs-12" style="padding-buttom:20px;padding-top:20px;padding-left:40px;">
+                                    <div class="col-xs-12"
+                                         style="padding-buttom:20px;padding-top:20px;padding-left:40px;">
                                         <table class="col-xs-12">
                                             <tr>
                                                 <td style="width: 15%">
@@ -271,12 +277,10 @@
                                 </p>
                                 <div class="row" style="padding-top:10px">
                                     <div class="col-xs-12" style="padding-top:20px;">
-                                        <div class="col-xs-6"
-                                             style="padding:10px;">
+                                        <div class="col-xs-6" style="padding:10px;">
                                             <span t-field="o.image1" t-field-options='{"widget": "image"}'/>
                                         </div>
-                                        <div class="col-xs-6"
-                                             style="padding:10px;">
+                                        <div class="col-xs-6" style="padding:10px;">
                                             <span t-field="o.image2" t-field-options='{"widget": "image"}'/>
                                         </div>
                                     </div>
