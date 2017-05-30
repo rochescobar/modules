@@ -1,10 +1,26 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <openerp>
     <data>
-            <!--&lt;!&ndash;Departamentos&ndash;&gt;-->
-        <!--<record id="demo_departament_0" model="hr.department">-->
-            <!--<field name="name">Departamento 1</field>-->
-        <!--</record>-->
+        <record id="email_template_edi_casa" model="mail.template">
+            <field name="name">House - Send by Email</field>
+            <field name="email_from">
+                ${(object.user_id.email and '%s &lt;%s&gt;' % (object.user_id.name, object.user_id.email) or '')|safe}
+            </field>
+            <field name="subject">${object.name} Invoice (Ref ${object.number or 'n/a'})</field>
+            <field name="partner_to">${object.partner_id.id}</field>
+            <field name="model_id" ref="enjoy.model_enjoy_casa"/>
+            <field name="auto_delete" eval="True"/>
+            <field name="report_template" ref="action_report_casa"/>
+            <field name="report_name">Casa_${(object.name or '').replace('/','_')}</field>
+            <field name="lang">${object.partner_id.lang}</field>
+            <field name="body_html"><![CDATA[
+                <p>Here is your casa <strong>${object.name}</strong>
+                </p>
+                <br/><br/>
+                <p>Thank you,</p>
+                ]]></field>
+        </record>
+
 
     </data>
 </openerp>

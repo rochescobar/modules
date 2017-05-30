@@ -241,7 +241,7 @@ class Commission(models.Model):
                     'casa_id': home.id,
                     'user_id': self.env.user.id,
                 })
-            # raise osv.except_osv(_("Success !"), _(" OK."))
+                # raise osv.except_osv(_("Success !"), _(" OK."))
 
     @api.one
     @api.depends('casa_id')
@@ -282,10 +282,38 @@ class Catalogo(models.Model):
     def _getnombre(self):
         self.name = "%s: %s (%s - %s)" % (self.nombre, self.lugar.name, self.desde, self.hasta)
 
+    company_id = fields.Many2one('res.company', string='Company', readonly=True,
+                                 default=lambda self: self.env.user.company_id)
+
+    @api.multi
+    def action_catalog_sent(self):
+        template = self.env.ref('enjoy.email_template_edi_catalogo', False)
+
+        ctx = dict(
+            default_model='enjoy.catalogo',
+            default_res_id=self.id,
+            default_use_template=bool(template),
+            default_template_id=template.id,
+            default_catalogo_id=self.id,
+        )
+
+        return {
+            'name': _('Compose Email'),
+            'type': 'ir.actions.act_window',
+            'view_type': 'form',
+            'view_mode': 'form',
+            'res_model': 'enjoy.report.catalogo',
+            # 'views': [(compose_form.id, 'form')],
+            # 'view_id': compose_form.id,
+            'target': 'new',
+            'context': ctx,
+        }
+
 
 class House(models.Model):
     _name = 'enjoy.casa'
     _description = 'Registro de casa'
+    _inherit = ['mail.thread']
     _order = 'nivel'
 
     @api.model
@@ -316,7 +344,7 @@ class House(models.Model):
     para = fields.Selection([('f', 'Family'), ('g', 'Groups'), ('m', 'Pets')], 'Is perfect for',
                             required=True)
     precio = fields.Integer('Price', required=True, default=0)
-    fpago = fields.Selection([('e', 'Cash'), ('t', 'Card')], 'Way to pay', required=True)
+    # fpago = fields.Selection([('e', 'Cash'), ('t', 'Card')], 'Way to pay', required=True)
     nivel = fields.Selection([('e', 'Economic'), ('c', 'Confort'), ('l', 'luxurious')], 'Level',
                              required=True)
     nivelx = fields.Char('Level', compute='_getnombre', store=True)
@@ -334,6 +362,9 @@ class House(models.Model):
 
     image_medium = fields.Binary("Medium-sized photo", attachment=True)
     image_small = fields.Binary("Small-sized photo", attachment=True)
+
+    company_id = fields.Many2one('res.company', string='Company', readonly=True,
+                                 default=lambda self: self.env.user.company_id)
 
     def open_image(self):
         self.ensure_one()
@@ -434,6 +465,31 @@ class House(models.Model):
         else:
             return self.precio
 
+    @api.multi
+    def action_casa_sent(self):
+        template = self.env.ref('enjoy.email_template_edi_casa', False)
+        compose_form = self.env.ref('enjoy.enjoy_reporte_mail_view', False)
+
+        ctx = dict(
+            default_model='enjoy.casa',
+            default_res_id=self.id,
+            default_use_template=bool(template),
+            default_template_id=template.id,
+            default_casa_id=self.id,
+        )
+
+        return {
+            'name': _('Compose Email House'),
+            'type': 'ir.actions.act_window',
+            'view_type': 'form',
+            'view_mode': 'form',
+            'res_model': 'enjoy.report.mail',
+            'views': [(compose_form.id, 'form')],
+            'view_id': compose_form.id,
+            'target': 'new',
+            'context': ctx,
+        }
+
     _sql_constraints = [
         ('key_unique', 'UNIQUE(name)', "There is a house with that name"),
     ]
@@ -476,5 +532,12 @@ class Destino(models.Model):
     _name = 'enjoy.destino'
     _description = 'Tos para los Correos de los catalogo'
 
-    name = fields.Char('Address', size=100, required=True)
-    report_id = fields.Many2one('enjoy.report.mail', 'Reporte', required=True)
+    name = fields.Char('Name', size=100, required=True)
+    email = fields.Char('Email', size=100, required=True)
+    user_id = fields.Many2one('res.users', 'Responsable', default=lambda self: self.env.user)
+    report_casa_id = fields.Many2many('enjoy.report.mail', 'Report')
+    report_catalog_id = fields.Many2many('enjoy.report.catalogo', 'Report')
+
+    _sql_constraints = [
+        ('key_unique', 'UNIQUE(email, user_id)', "There are duplicate emails"),
+    ]

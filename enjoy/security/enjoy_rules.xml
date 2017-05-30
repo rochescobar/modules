@@ -13,6 +13,12 @@
             <field name="domain_force">[('user_id', '=', user.id)]</field>
             <field name="groups" eval="[(4,ref('group_enjoy_vendedor'))]"/>
         </record>
+        <record id="enjoy_vendedor_destino" model="ir.rule">
+            <field name="name">destinos de Vendedores</field>
+            <field name="model_id" ref="model_enjoy_destino"/>
+            <field name="domain_force">[('user_id', '=', user.id)]</field>
+            <field name="groups" eval="[(4,ref('group_enjoy_vendedor'))]"/>
+        </record>
         <!--<record id="enjoy_director_adminarea" model="ir.rule">-->
         <!--<field name="name">Director AdminArea</field>-->
         <!--<field name="model_id" ref="model_enjoy_adminarea"/>-->

@@ -24,6 +24,7 @@
                 report_type="qweb-pdf"
                 name="enjoy.report_enjoy_casa"
                 file="enjoy.report_enjoy_casa"
+                attachment_use="True"
         />
         <report
                 id="action_report_catalogo"
@@ -40,6 +41,5 @@
         <record id="action_report_catalogo" model="ir.actions.report.xml">
             <field name="paperformat_id" ref="paperformat_legal_portrait"/>
         </record>
-
     </data>
 </odoo>

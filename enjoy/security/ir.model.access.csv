@@ -13,6 +13,9 @@ access_comision_vendedor,enjoy.comision.vendedor,model_enjoy_comision,group_enjo
 access_reporte_vendedor,enjoy.reporte.vendedor,model_enjoy_reporte,group_enjoy_vendedor,1,1,1,0
 access_catalogo_vendedor,enjoy.catalogo.vendedor,model_enjoy_catalogo,group_enjoy_vendedor,1,0,0,0
 access_provincia_vendedor,enjoy.provincia.vendedor,model_enjoy_provincia,group_enjoy_vendedor,1,0,0,0
+access_destino_vendedor,enjoy.destino.vendedor,model_enjoy_destino,group_enjoy_vendedor,1,1,1,1
+access_report_mail_vendedor,enjoy.report.mail.vendedor,model_enjoy_report_mail,group_enjoy_vendedor,1,1,1,1
+access_report_catalogo_vendedor,enjoy.report.catalogo.vendedor,model_enjoy_report_catalogo,group_enjoy_vendedor,1,1,1,1
 
 
 access_modelo_admin,enjoy.modelo.admin,model_enjoy_modelo,group_enjoy_admin,1,1,1,1
