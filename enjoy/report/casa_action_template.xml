@@ -1,0 +1,107 @@
+<?xml version="1.0" ?>
+<odoo>
+    <data>
+        <record id="email_template_edi_casa" model="mail.template">
+            <field name="name">House - Send by Email</field>
+            <field name="email_from">${object.company_id.email}</field>
+            <field name="subject">Enjoy Cuba: Casa|House ${object.name}</field>
+            <field name="model_id" ref="enjoy.model_enjoy_casa"/>
+            <field name="auto_delete" eval="True"/>
+            <field name="report_template" ref="action_report_casa"/>
+            <field name="report_name">Casa_${(object.name or '').replace('/','_')}</field>
+            <field name="lang">${object.company_id.lang}</field>
+            <field name="body_html"><![CDATA[<html>
+                <head></head>
+                <body style="margin: 0; padding: 0;">
+                <table border="0" width="100%" cellpadding="0" bgcolor="#ededed" style="padding: 20px; background-color: #ededed" summary="o_mail_notification">
+                    <tbody>
+                      <!-- HEADER -->
+                      <tr>
+                        <td align="center" style="min-width: 590px;">
+                          <table width="590" border="0" cellpadding="0" bgcolor="#c4691a" style="min-width: 590px; background-color: rgb(135,90,123); padding: 20px;">
+                            <tr>
+                              <td valign="middle">
+                                  <span style="font-size:20px; color:white; font-weight: bold;">
+                                      Casa | House ${object.record_name}
+                                  </span>
+                              </td>
+                              <td valign="middle" align="right">
+                                  <img src="/enjoy/static/description/icon.png" style="padding: 0px; margin: 0px; height: auto; width: 80px;" alt="${user.name}">
+                              </td>
+                            </tr>
+                          </table>
+                        </td>
+                      </tr>
+
+                      <!-- CONTENT -->
+                      <tr>
+                        <td align="center" style="min-width: 590px;">
+                          <table width="590" border="0" cellpadding="0" bgcolor="#ffffff" style="min-width: 590px; background-color: rgb(255, 255, 255); padding: 20px;">
+                            <tbody>
+                              <td valign="top" style="font-family:Arial,Helvetica,sans-serif; color: #555; font-size: 14px;">
+                                ${object.body | safe}
+                              </td>
+                            </tbody>
+                          </table>
+                        </td>
+                      </tr>
+                    </tbody>
+                </table>
+                </body>
+                </html>
+            ]]></field>
+        </record>
+
+        <record id="email_template_edi_catalogo" model="mail.template">
+            <field name="name">Cataloge - Send by Email</field>
+            <field name="email_from">${object.company_id.email}</field>
+            <field name="subject">${object.name}</field>
+            <field name="model_id" ref="enjoy.model_enjoy_catalogo"/>
+            <field name="auto_delete" eval="True"/>
+            <field name="report_template" ref="action_report_catalogo"/>
+            <field name="report_name">Catalog_${(object.name or '').replace('/','_')}</field>
+            <field name="lang">${object.company_id.lang}</field>
+            <field name="body_html"><![CDATA[<html>
+                <head></head>
+                <body style="margin: 0; padding: 0;">
+                <table border="0" width="100%" cellpadding="0" bgcolor="#ededed" style="padding: 20px; background-color: #ededed" summary="o_mail_notification">
+                    <tbody>
+                      <!-- HEADER -->
+                      <tr>
+                        <td align="center" style="min-width: 590px;">
+                          <table width="590" border="0" cellpadding="0" bgcolor="#c4691a" style="min-width: 590px; background-color: rgb(135,90,123); padding: 20px;">
+                            <tr>
+                              <td valign="middle">
+                                  <span style="font-size:20px; color:white; font-weight: bold;">
+                                      ${object.record_name}
+                                  </span>
+                              </td>
+                              <td valign="middle" align="right">
+                                  <img src="/enjoy/static/description/icon.png" style="padding: 0px; margin: 0px; height: auto; width: 80px;" alt="${user.name}">
+                              </td>
+                            </tr>
+                          </table>
+                        </td>
+                      </tr>
+
+                      <!-- CONTENT -->
+                      <tr>
+                        <td align="center" style="min-width: 590px;">
+                          <table width="590" border="0" cellpadding="0" bgcolor="#ffffff" style="min-width: 590px; background-color: rgb(255, 255, 255); padding: 20px;">
+                            <tbody>
+                              <td valign="top" style="font-family:Arial,Helvetica,sans-serif; color: #555; font-size: 14px;">
+                                ${object.body | safe}
+                              </td>
+                            </tbody>
+                          </table>
+                        </td>
+                      </tr>
+                    </tbody>
+                </table>
+                </body>
+                </html>
+            ]]></field>
+        </record>
+
+    </data>
+</odoo>
