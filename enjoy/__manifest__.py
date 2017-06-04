@@ -35,8 +35,8 @@ Sistema el control de autos y casas de renta
         'report/report_enjoy_casa.xml',
         'report/report_enjoy_catalogo.xml',
         'report/report_casa.xml',
-        'report/casa_action_template.xml',
         'wizard/enjoy_reporte_mail.xml',
+        'report/casa_action_template.xml',
         'security/enjoy_rules.xml',
     ],
     'demo': [

@@ -1,7 +1,12 @@
 <?xml version="1.0"?>
 <openerp>
     <data noupdate="0">
-    	<record id="login_form_disable_footer" model="ir.config_parameter">
+    	<record id="login_form_disable_languaje" model="ir.config_parameter">
+            <field name="key">login_form_disable_languaje</field>
+            <field name="value">False</field>
+        </record>
+
+        <record id="login_form_disable_footer" model="ir.config_parameter">
             <field name="key">login_form_disable_footer</field>
             <field name="value">False</field>
         </record>

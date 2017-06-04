@@ -69,3 +69,7 @@ g7Zq9u8h
 			git push https://github.com/rochescobar/modules.git
 
 			sudo systemctl restart odoo-server
+
+			cenit:
+			user key:   N316872030
+			user token: Gs7zmJBYBBhq-fyYsuzc
