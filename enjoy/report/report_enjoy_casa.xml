@@ -134,7 +134,7 @@
                                             <h2>
                                                 <span style="color:c4691a">Price:</span>
                                                 <span t-esc="o.get_commision()"
-                                                      t-options="{'widget': 'monetary', 'display_currency': res_company.currency_id}"/>
+                                                      t-options="{'widget': 'monetary', 'display_currency': user.currency_id}"/>
                                             </h2>
                                         </div>
                                     </div>

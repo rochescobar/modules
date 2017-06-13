@@ -107,7 +107,7 @@
                                 <field name="para"/>
                                 <field name="nivel"/>
                                 <field name="nivelx" invisible="1"/>
-                                <field name="precio"/>
+                                <field name="precio" widget="monetary" options="{'currency_field': 'uid.currency_id'}"/>
 
                                 <!--<field name="comision"/>-->
                             </group>
