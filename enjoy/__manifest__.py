@@ -31,7 +31,7 @@ Sistema el control de autos y casas de renta
         'vistas/comision.xml',
         'vistas/catalogo.xml',
         'vistas/destino.xml',
-        'vistas/user.xml',
+        # 'vistas/user.xml',
         'workflows/workflow_reporte.xml',
         'report/report_enjoy_casa.xml',
         'report/report_enjoy_catalogo.xml',
