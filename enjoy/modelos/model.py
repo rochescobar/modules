@@ -20,8 +20,8 @@ class Users(models.Model):
     _name = "res.users"
     _inherit = "res.users"
 
-    # currency_id = fields.Many2one('res.currency', string='currency', required=True,
-    #                               default=lambda self: self.env['res.currency'].search([('active', '=', 'True')])[0])
+    currency_id = fields.Many2one('res.currency', string='currency', required=True,
+                                  default=lambda self: self.env['res.currency'].search([('active', '=', 'True')])[0])
 
 
 class Modelo(models.Model):
