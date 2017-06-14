@@ -21,7 +21,7 @@
             <field name="arch" type="xml">
                 <form string="catalogo">
                     <header>
-                        <button name="action_catalog_sent" type="object" string="Send by Email"  class="oe_highlight"/>
+                        <button name="action_catalog_sent" type="object" string="Send by Email" class="oe_highlight"/>
                     </header>
                     <sheet string="catalogo">
                         <label for="nombre" class="oe_edit_only" string="Catalogue name"/>
@@ -32,11 +32,14 @@
                             <field name="lugar"/>
                             <field name="desde"/>
                             <field name="hasta"/>
+                            <field name="user_id" readonly="1" colspan="2"/>
+                             <!--<field name="casa_ids" widget="many2many_tags"-->
+                                   <!--options="{'no_create': True}" colspan="4"/>-->
                         </group>
                         <notebook>
                             <page string="Houses">
                                 <field name="casa_ids" colspan="4" nolabel="1" mode="tree">
-                                    <tree string="Casas" default_order='name'>
+                                    <tree string="Casas" default_order='name' create="true" edit="false" delete="true">
                                         <field name="name"/>
                                         <field name="lugar"/>
                                         <field name="dispone"/>

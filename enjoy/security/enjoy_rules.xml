@@ -19,6 +19,12 @@
             <field name="domain_force">[('user_id', '=', user.id)]</field>
             <field name="groups" eval="[(4,ref('group_enjoy_vendedor'))]"/>
         </record>
+        <record id="enjoy_vendedor_catalogo" model="ir.rule">
+            <field name="name">Catalogo de Vendedores</field>
+            <field name="model_id" ref="model_enjoy_catalogo"/>
+            <field name="domain_force">[('user_id', '=', user.id)]</field>
+            <field name="groups" eval="[(4,ref('group_enjoy_vendedor'))]"/>
+        </record>
         <!--<record id="enjoy_director_adminarea" model="ir.rule">-->
         <!--<field name="name">Director AdminArea</field>-->
         <!--<field name="model_id" ref="model_enjoy_adminarea"/>-->

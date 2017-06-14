@@ -276,6 +276,7 @@ class Catalogo(models.Model):
     desde = fields.Char('From', size=200, required=True)
     hasta = fields.Char('To', size=200, required=True)
     casa_ids = fields.Many2many('enjoy.casa', 'enjoy_catalogo_casa', 'catalogo_id', 'casa_id', 'Houses and apartments')
+    user_id = fields.Many2one('res.users', 'Responsable', default=lambda self: self.env.user)
 
     @api.one
     @api.depends('nombre', 'lugar', 'desde', 'hasta')
